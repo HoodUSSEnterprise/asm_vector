@@ -80,6 +80,9 @@ yes:
     mov rcx, [r14]
     call free
     mov [r14], rbx
+    mov rcx, r13
+    sub rcx, rdi
+    mov [r14 + 8], rcx
     jmp pop_data
 
 zero:
