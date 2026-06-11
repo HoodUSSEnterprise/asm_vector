@@ -1,5 +1,7 @@
 global scale_vector
 section .text
+extern malloc
+extern free
 
 ; MyVector *scale_vector(MyVector *v, int scale);
 ; rcx = v, edx = scale

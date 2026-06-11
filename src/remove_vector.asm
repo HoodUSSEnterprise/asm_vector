@@ -1,5 +1,7 @@
 global remove_vector
 section .text
+extern malloc
+extern free
 
 ; bool remove_vector(MyVector *v, int removed_value);
 ; rcx = v, edx = removed_value
@@ -22,18 +24,18 @@ remove_vector:
     mov rsi, [r14] ; rsi = v->data
     xor rcx, rcx ; i = 0
 
-.calc_number
+calc_number:
     cmp rcx, r13 ; i < len
     jge next
     cmp [rsi + rcx * 4], r15d ; data[i] == removed_value
     je count_plus
 
     inc rcx
-    jmp .calc_number
+    jmp calc_number
 
 count_plus:
     add rdi, 1 ; number + 1
-    jmp .calc_number
+    jmp calc_number
 
 next:
     cmp rdi, 0
@@ -46,7 +48,7 @@ next:
     sub rcx, rdi
     call malloc
     test rax, rax
-    jz .failed_data
+    jz failed_data
 
     mov rbx, rax ; rbx = new_data
 
@@ -65,7 +67,7 @@ change_value:
     inc rcx ; i++
     jmp change_value
 
-change
+change:
     inc rcx ; j++
     jmp change_value
 
@@ -87,7 +89,7 @@ zero:
     mov rax, 1 ; return true
     jmp pop_data
 
-.failed_data:
+failed_data:
     mov rax, 0
     jmp pop_data
 
