@@ -3,7 +3,17 @@
 int main(void)
 {
     int *data = (int *)malloc(sizeof(int) * 3);
+    if (data == NULL)
+    {
+        fprintf(stderr, "Memory allocation failed\n");
+        return 0;
+    }
     int *data1 = (int *)malloc(sizeof(int) * 3);
+    if (data1 == NULL)
+    {
+        fprintf(stderr, "Memory allocation failed\n");
+        return 0;
+    }
     for (int i = 0; i < 3; i++)
     {
         data[i] = i + 1;
