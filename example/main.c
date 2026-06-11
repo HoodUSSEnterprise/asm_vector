@@ -117,5 +117,33 @@ int main(void)
         printf("No find value %d\n", find_val2);
     }
     puts("------------------------------------------------");
+    puts("----------------replace vector------------------");
+    for (int i = 0; i < 10; i++)
+    {
+        push_back(v3, i + 1);
+    }
+    puts("Before:");
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
+    int old_data = 6;
+    int new_data = 9;
+    puts("After");
+    if (replace_vector(v3, old_data, new_data))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%d ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        printf("No find value %d\n", old_data);
+    }
     return 0;
 }
