@@ -80,14 +80,31 @@ int main(void)
             printf("%d ", v3->data[i]);
         }
     }
+    else
+    {
+        printf("No element remove\n");
+    }
     putchar('\n');
     puts("------------------------------------------------");
     puts("------------------find vector-------------------");
-    int find_val = 10;
+    int find_val1 = 6;
+    int find_val2 = 10;
     int idx = 0;
-    if (find_vector(v3, find_val, &idx))
+    if (find_vector(v3, find_val1, &idx))
     {
-        printf("value %d index = %d\n", find_val, idx);
+        printf("value %d index = %d\n", find_val1, idx);
+    }
+    else
+    {
+        printf("No find value %d\n", find_val1);
+    }
+    if (find_vector(v3, find_val2, &idx))
+    {
+        printf("value %d index = %d\n", find_val2, idx);
+    }
+    else
+    {
+        printf("No find value %d\n", find_val2);
     }
     return 0;
 }
