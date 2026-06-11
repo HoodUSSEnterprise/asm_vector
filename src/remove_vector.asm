@@ -35,6 +35,7 @@ calc_number:
 
 count_plus:
     add rdi, 1 ; number + 1
+    inc rcx
     jmp calc_number
 
 next:
