@@ -82,7 +82,7 @@ int main(void)
     }
     else
     {
-        printf("No element remove\n");
+        puts("No element remove");
     }
     putchar('\n');
     puts("------------------------------------------------");
@@ -106,5 +106,6 @@ int main(void)
     {
         printf("No find value %d\n", find_val2);
     }
+    puts("------------------------------------------------");
     return 0;
 }
