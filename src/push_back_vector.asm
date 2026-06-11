@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; void push_pack(MyVector *v, int data);
+; void push_back(MyVector *v, int data);
 ; rcx = v, rdx = data
 push_back:
 
@@ -16,11 +16,11 @@ push_back:
 
     mov r14, rcx ; r14 = v
     mov r13, [rcx + 8] ; r13 = v->len
-    mov r15d, edx ; r15d = data, because eax is 4 bytes(32 bits).
+    mov r15d, edx ; r15d = data, because eax is 4 bytes(32 bits)
 
     ; check paraments
     test r14, r14
-    jz .null_ptr
+    jz null_ptr
 
     ; malloc for data
     mov rcx, r13 ; rcx = len
@@ -28,7 +28,7 @@ push_back:
     shl rcx, 2 ; sizeof(int) = 4, move left 2 bytes
     call malloc
     test rax, rax
-    jz .failed_data
+    jz failed_data
 
     ; save the malloc res->data
     mov rbx, rax
@@ -37,7 +37,7 @@ push_back:
     mov rdi, [r14] ; v->data
     xor rcx, rcx   ; rcx = 0
 
-.loop
+.loop:
     cmp rcx, r13 ; judge is great than len
     jg pop_data
     cmp rcx, r13 ; arr index is less than length by 1, so we can use this number
@@ -60,10 +60,10 @@ equal:
     mov [r14 + 8], r13
     jmp pop_data
 
-.failed_data:
+failed_data:
     jmp pop_data
 
-.null_ptr:
+null_ptr:
     jmp pop_data
 
 pop_data:
