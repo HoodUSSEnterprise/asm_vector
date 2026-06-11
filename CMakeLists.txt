@@ -17,6 +17,8 @@ include_directories(include)
 # 库的源文件（不含main）
 set(LIB_SOURCES_VECTOR
     src/add_vector.asm
+    src/sub_vector.asm
+    src/mul_vector.asm
 )
 
 # 创建库

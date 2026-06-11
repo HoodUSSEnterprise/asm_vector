@@ -1,4 +1,5 @@
 #include "add_vector.h"
+#include "mul_vector.h"
 
 int main(void)
 {
@@ -19,5 +20,11 @@ int main(void)
         printf("%d ", v3->data[i]);
     }
     putchar('\n');
+    v3 = mul_vector_cross(&v1, &v2);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < 3; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
     return 0;
 }
