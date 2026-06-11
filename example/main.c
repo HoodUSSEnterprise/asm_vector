@@ -30,7 +30,7 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("-------------------mul vector-------------------");
-    int val = mul_vector(&v1, &v2);
+    int val = mul_vector_dot(&v1, &v2);
     printf("val = %d\n", val);
     putchar('\n');
     v3 = mul_vector_cross(&v1, &v2);
@@ -51,8 +51,8 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("----------------push_back vector----------------");
-    push_pack(&v3, 4);
-    push_pack(&v3, 5);
+    push_back(v3, 4);
+    push_back(v3, 5);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < v3->len; i++)
     {
@@ -62,7 +62,7 @@ int main(void)
     puts("------------------------------------------------");
     puts("-------------------pop vector-------------------");
     int pop_value = 0;
-    pop(&v3, &pop_value);
+    pop(v3, &pop_value);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < v3->len; i++)
     {
@@ -72,7 +72,7 @@ int main(void)
     puts("------------------------------------------------");
     puts("-----------------remove vector------------------");
     int remove_val = 4;
-    if (remove_vector(&v3, remove_val))
+    if (remove_vector(v3, remove_val))
     {
         printf("%zu\n", v3->len);
         for (size_t i = 0; i < v3->len; i++)
@@ -85,7 +85,7 @@ int main(void)
     puts("------------------find vector-------------------");
     int find_val = 10;
     int idx = 0;
-    if (find_vector(&v3, find_val, &idx))
+    if (find_vector(v3, find_val, &idx))
     {
         printf("value %d index = %d\n", find_val, idx);
     }
