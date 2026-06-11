@@ -17,8 +17,13 @@ include_directories(include)
 # 库的源文件（不含main）
 set(LIB_SOURCES_VECTOR
     src/add_vector.asm
-    src/sub_vector.asm
+    src/find_vector.asm
     src/mul_vector.asm
+    src/pop_vector.asm
+    src/push_back_vector.asm
+    src/remove_vector.asm
+    src/scale_vector.asm
+    src/sub_vector.asm
 )
 
 # 创建库
@@ -27,6 +32,6 @@ add_library(vector_lib ${LIB_SOURCES_VECTOR})
 target_include_directories(vector_lib PUBLIC include)
 
 # 创建测试可执行文件
-add_executable(MyProject src/main.c)
+add_executable(MyProject example/main.c)
 target_link_libraries(MyProject vector_lib)
 # add_executable(MyProject src/main.c src/add_vector.asm)
