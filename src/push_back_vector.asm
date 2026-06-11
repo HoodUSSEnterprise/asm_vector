@@ -1,11 +1,11 @@
-global push_back_vector
+global push_back
 section .text
 extern malloc
 extern free
 
 ; MyVector *push_pack(MyVector *v, int data);
 ; rcx = v, rdx = data
-push_back_vector:
+push_back:
 
     push rbx
     push rdi
