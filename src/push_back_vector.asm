@@ -10,7 +10,6 @@ push_back_vector:
     push rbx
     push rdi
     push rsi
-    push r12
     push r13
     push r14
     push r15
@@ -23,13 +22,6 @@ push_back_vector:
     test r14, r14
     jz .null_ptr
 
-    ; malloc for res
-    mov rcx, 16 ; MyVector 16 bytes
-    call malloc
-    test rax, rax
-    jz .failed_res
-    mov rbx, rax
-
     ; malloc for data
     mov rcx, r13 ; rcx = len
     add rcx, 1   ; rcx += 1;
@@ -38,16 +30,11 @@ push_back_vector:
     test rax, rax
     jz .failed_data
 
-    ; save the malloc res
-    mov [rbx], rax
-    add r13, 1
-    mov [rbx + 8], r13
-    sub r13, 1
+    ; save the malloc res->data
+    mov rbx, rax
 
     ; new data
-    ; add r13, 1 ; date len changed
     mov rdi, [r14] ; v->data
-    mov r12, [rbx] ; res->data
     xor rcx, rcx   ; rcx = 0
 
 .loop
@@ -57,41 +44,32 @@ push_back_vector:
     je equal
     
     mov eax, [rdi + rcx * 4] ; use eax 32 bytes in order to fit int
-    mov [r12 + rcx * 4], eax
+    mov [rbx + rcx * 4], eax
 
     inc rcx ; rcx++
     jmp .loop
 
 equal:
-    mov [r12 + rcx * 4], r15d
+    mov [rbx + rcx * 4], r15d
 
-    ; ; free before data
-    ; mov rcx, [r14]
-    ; call free
-    ; mov rcx, r14
-    ; call free
-    jmp pop_data
-
-
-.failed_res:
-    mov rax, 0
+    ; free before data
+    mov rcx, [r14]
+    call free
+    mov [r14], rbx
+    add r13, 1
+    mov [r14 + 8], r13
     jmp pop_data
 
 .failed_data:
-    mov rcx, rbx
-    call free
-    mov rax, 0
     jmp pop_data
 
 .null_ptr:
-    mov rax, 0
     jmp pop_data
 
 pop_data:
     pop r15
     pop r14
     pop r13
-    pop r12
     pop rsi
     pop rdi
     pop rbx
