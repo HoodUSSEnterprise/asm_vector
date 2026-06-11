@@ -17,7 +17,7 @@ scale_vector:
     ; use r14 and r15 to save paraments
     mov r14, rcx ; r14 = v1
     mov r15d, edx ; r15 = scale
-    mov r13, [rcx + 8]
+    mov r13, [rcx + 8] ; r3 = v1 -> len
 
     ; check v1 and v2
     test r14, r14
@@ -26,14 +26,16 @@ scale_vector:
     ; malloc for res, 16 byte
     mov rcx, 16
     call malloc
+    ; judge is or not malloc success
     test rax, rax
     jz .failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
     ; malloc for data, len * 4 byte
     mov rcx, r13
-    shl rcx, 2
+    shl rcx, 2 ; rcx * 4
     call malloc
+    ; judge is or not malloc success
     test rax, rax
     jz .failed_data
 
