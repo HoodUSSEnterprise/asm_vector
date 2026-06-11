@@ -9,6 +9,7 @@
 #include "push_back_vector.h"
 #include "remove_vector.h"
 #include "replace_vector.h"
+#include "reverse_vector.h"
 #include "scale_vector.h"
 #include "sub_vector.h"
 

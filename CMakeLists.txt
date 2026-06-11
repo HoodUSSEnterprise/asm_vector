@@ -23,6 +23,7 @@ set(LIB_SOURCES_VECTOR
     src/push_back_vector.asm
     src/remove_vector.asm
     src/replace_vector.asm
+    src/reverse_vector.asm
     src/scale_vector.asm
     src/sub_vector.asm
 )

@@ -145,5 +145,14 @@ int main(void)
     {
         printf("No find value %d\n", old_data);
     }
+    puts("------------------------------------------------");
+    puts("----------------reverse vector------------------");
+    reverse_vector(v3);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
     return 0;
 }
