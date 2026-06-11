@@ -12,18 +12,19 @@
 
 ## API 一览
 
-| 函数 | 说明 |
-|------|------|
-| `add_vector(v1, v2)` | 两个向量逐元素相加 |
-| `sub_vector(v1, v2)` | 两个向量逐元素相减 |
-| `mul_vector_dot(v1, v2)` | 两个向量的点积 |
-| `mul_vector_cross(v1, v2)` | 两个向量的叉积 |
-| `scale_vector(v, s)` | 向量所有元素乘以标量 |
-| `push_back(v, val)` | 在向量尾部追加元素 |
-| `pop(v, &val)` | 移除并返回尾部元素 |
-| `remove_vector(v, val)` | 移除第一个匹配的值 |
-| `find_vector(v, val, &idx)` | 查找值并返回索引 |
-| `replace_vector(v, old, new)` | 替换第一个匹配的值 |
+| 函数                          | 说明                 |
+| ----------------------------- | -------------------- |
+| `add_vector(v1, v2)`          | 两个向量逐元素相加   |
+| `sub_vector(v1, v2)`          | 两个向量逐元素相减   |
+| `mul_vector_dot(v1, v2)`      | 两个向量的点积       |
+| `mul_vector_cross(v1, v2)`    | 两个向量的叉积       |
+| `scale_vector(v, s)`          | 向量所有元素乘以标量 |
+| `push_back(v, val)`           | 在向量尾部追加元素   |
+| `pop(v, &val)`                | 移除并返回尾部元素   |
+| `remove_vector(v, val)`       | 移除第一个匹配的值   |
+| `find_vector(v, val, &idx)`   | 查找值并返回索引     |
+| `replace_vector(v, old, new)` | 替换第一个匹配的值   |
+| `reverse_vector(v)`           | 颠倒向量             |
 
 ## 构建
 

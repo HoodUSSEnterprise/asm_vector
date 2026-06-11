@@ -12,18 +12,19 @@ A C vector library with x64 NASM assembly implementations for high-performance v
 
 ## API Overview
 
-| Function | Description |
-|----------|-------------|
-| `add_vector(v1, v2)` | Element-wise addition of two vectors |
-| `sub_vector(v1, v2)` | Element-wise subtraction of two vectors |
-| `mul_vector_dot(v1, v2)` | Dot product of two vectors |
-| `mul_vector_cross(v1, v2)` | Cross product of two vectors |
-| `scale_vector(v, s)` | Multiply all elements by a scalar |
-| `push_back(v, val)` | Append an element to the vector |
-| `pop(v, &val)` | Remove and retrieve the last element |
-| `remove_vector(v, val)` | Remove the first occurrence of a value |
-| `find_vector(v, val, &idx)` | Find a value and store its index |
+| Function                      | Description                             |
+| ----------------------------- | --------------------------------------- |
+| `add_vector(v1, v2)`          | Element-wise addition of two vectors    |
+| `sub_vector(v1, v2)`          | Element-wise subtraction of two vectors |
+| `mul_vector_dot(v1, v2)`      | Dot product of two vectors              |
+| `mul_vector_cross(v1, v2)`    | Cross product of two vectors            |
+| `scale_vector(v, s)`          | Multiply all elements by a scalar       |
+| `push_back(v, val)`           | Append an element to the vector         |
+| `pop(v, &val)`                | Remove and retrieve the last element    |
+| `remove_vector(v, val)`       | Remove the first occurrence of a value  |
+| `find_vector(v, val, &idx)`   | Find a value and store its index        |
 | `replace_vector(v, old, new)` | Replace the first occurrence of a value |
+| `reverse_vector(v)`           | Reverse the vector                      |
 
 ## Build
 
