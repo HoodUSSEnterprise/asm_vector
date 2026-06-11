@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; MyVector *push_pack(MyVector *v, int data);
+; void push_pack(MyVector *v, int data);
 ; rcx = v, rdx = data
 push_back:
 
