@@ -3,6 +3,6 @@
 
 #include "myvector.h"
 
-void insert_vector(MyVector *v, int pos, int value);
+void insert_vector(MyVector *v, size_t pos, int value);
 
 #endif // INSERT_VECTOR_H
