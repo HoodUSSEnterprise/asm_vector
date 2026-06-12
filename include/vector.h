@@ -3,6 +3,7 @@
 
 #include "add_vector.h"
 #include "find_vector.h"
+#include "insert_vector.h"
 #include "mul_vector.h"
 #include "myvector.h"
 #include "pop_vector.h"

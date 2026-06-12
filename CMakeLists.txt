@@ -18,6 +18,7 @@ include_directories(include)
 set(LIB_SOURCES_VECTOR
     src/add_vector.asm
     src/find_vector.asm
+    src/insert_vector.asm
     src/mul_vector.asm
     src/pop_vector.asm
     src/push_back_vector.asm

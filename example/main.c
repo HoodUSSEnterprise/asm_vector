@@ -154,5 +154,14 @@ int main(void)
         printf("%d ", v3->data[i]);
     }
     putchar('\n');
+    puts("------------------------------------------------");
+    puts("-----------------insert vector------------------");
+    insert_vector(v3, 2, 4);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
     return 0;
 }
