@@ -19,10 +19,10 @@ int main(void)
         data[i] = i + 1;
         data1[i] = 4 - i;
     }
-    MyVector v1 = {data, 3};
-    MyVector v2 = {data1, 3};
+    VectorInt v1 = {data, 3};
+    VectorInt v2 = {data1, 3};
     puts("-------------------add vector-------------------");
-    MyVector *v3 = add_vector(&v1, &v2);
+    VectorInt *v3 = add_vector(&v1, &v2);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < 3; i++)
     {
@@ -117,5 +117,60 @@ int main(void)
         printf("No find value %d\n", find_val2);
     }
     puts("------------------------------------------------");
+    puts("----------------replace vector------------------");
+    for (int i = 0; i < 10; i++)
+    {
+        push_back(v3, i + 1);
+    }
+    puts("Before:");
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
+    int old_data = 6;
+    int new_data = 9;
+    puts("After");
+    if (replace_vector(v3, old_data, new_data))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%d ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        printf("No find value %d\n", old_data);
+    }
+    puts("------------------------------------------------");
+    puts("----------------reverse vector------------------");
+    reverse_vector(v3);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    puts("-----------------insert vector------------------");
+    size_t insert_pos = 2;
+    // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
+    //        v3, v3->data, v3->len, insert_pos);
+    if (insert_vector(v3, insert_pos, 4))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%d ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        puts("Error insert");
+    }
     return 0;
 }

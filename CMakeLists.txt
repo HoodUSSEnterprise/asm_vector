@@ -18,10 +18,13 @@ include_directories(include)
 set(LIB_SOURCES_VECTOR
     src/add_vector.asm
     src/find_vector.asm
+    src/insert_vector.asm
     src/mul_vector.asm
     src/pop_vector.asm
     src/push_back_vector.asm
     src/remove_vector.asm
+    src/replace_vector.asm
+    src/reverse_vector.asm
     src/scale_vector.asm
     src/sub_vector.asm
 )
@@ -35,3 +38,6 @@ target_include_directories(vector_lib PUBLIC include)
 add_executable(MyProject example/main.c)
 target_link_libraries(MyProject vector_lib)
 # add_executable(MyProject src/main.c src/add_vector.asm)
+# add_custom_command(TARGET MyProject POST_BUILD
+#     COMMAND ${CMAKE_C_COMPILER} -S ${CMAKE_CURRENT_SOURCE_DIR}/example/main.c -I${CMAKE_CURRENT_SOURCE_DIR}/include -o ${CMAKE_CURRENT_BINARY_DIR}/main.s
+# )
