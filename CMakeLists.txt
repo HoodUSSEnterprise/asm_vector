@@ -49,7 +49,7 @@ set(LIB_SOURCES_VECTOR_DOUBLE
     # src/insert_vector_double.asm
     src/mul_vector_double.asm
     # src/pop_vector_double.asm
-    # src/push_back_vector_double.asm
+    src/push_back_vector_double.asm
     # src/remove_vector_double.asm
     # src/replace_vector_double.asm
     # src/reverse_vector_double.asm

@@ -60,5 +60,15 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
+    puts("----------------push_back vector----------------");
+    push_back_double(v3, 4);
+    push_back_double(v3, 5);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%lf ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
     return 0;
 }
