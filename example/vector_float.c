@@ -40,8 +40,8 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("-------------------mul vector-------------------");
-    float val = imul_vector_float_dot(&v1, &v2);
-    printf("val = %d\n", val);
+    float val = mul_vector_float_dot(&v1, &v2);
+    printf("val = %f\n", val);
     putchar('\n');
     v3 = mul_vector_float_cross(&v1, &v2);
     printf("%zu\n", v3->len);
