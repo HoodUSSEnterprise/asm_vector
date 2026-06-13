@@ -33,7 +33,8 @@ imul_vector_int_dot:
     mov rdi, [r14] ; rdi = v1->data
     mov rsi, [r15] ; rsi = v2->data
     xor eax, eax
-on_loop
+    
+on_loop:
     cmp rcx, r13 ; i < v1->len
     jge pop_data_dot
     
