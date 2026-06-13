@@ -37,7 +37,7 @@ push_back_int:
     mov rdi, [r14] ; v->data
     xor rcx, rcx   ; rcx = 0
 
-.loop:
+on_loop:
     cmp rcx, r13 ; judge is great than len
     jg pop_data
     cmp rcx, r13 ; arr index is less than length by 1, so we can use this number
@@ -47,7 +47,7 @@ push_back_int:
     mov [rbx + rcx * 4], eax
 
     inc rcx ; rcx++
-    jmp .loop
+    jmp on_loop
 
 equal:
     mov [rbx + rcx * 4], r15d
