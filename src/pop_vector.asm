@@ -1,7 +1,7 @@
 global pop
 section .text
 
-; void pop(MyVector *v, int *data);
+; void pop(VectorInt *v, int *data);
 ; rcx = v, rdx = data
 pop:
 
