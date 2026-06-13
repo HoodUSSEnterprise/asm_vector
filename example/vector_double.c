@@ -155,5 +155,20 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
+    puts("-----------------insert vector------------------");
+    size_t insert_pos = 2;
+    if (insert_vector_double(v3, insert_pos, 4))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%lf ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        puts("Error insert");
+    }
     return 0;
 }

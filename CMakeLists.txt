@@ -46,7 +46,7 @@ target_link_libraries(MyProject vector_lib)
 set(LIB_SOURCES_VECTOR_DOUBLE
     src/add_vector_double.asm
     src/find_vector_double.asm
-    # src/insert_vector_double.asm
+    src/insert_vector_double.asm
     src/mul_vector_double.asm
     src/pop_vector_double.asm
     src/push_back_vector_double.asm
