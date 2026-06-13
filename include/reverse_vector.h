@@ -3,6 +3,6 @@
 
 #include "myvector.h"
 
-void reverse_vector(MyVector *v);
+void reverse_vector(VectorInt *v);
 
 #endif // REVERSE_VECTOR_H
