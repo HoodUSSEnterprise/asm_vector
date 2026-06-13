@@ -3,6 +3,6 @@
 
 #include "myvector.h"
 
-MyVector *add_vector(MyVector *v1, MyVector *v2);
+VectorInt *add_vector(VectorInt *v1, VectorInt *v2);
 
 #endif // ADD_VECTOR_H
