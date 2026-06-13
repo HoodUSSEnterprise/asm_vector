@@ -1,11 +1,11 @@
-global push_back
+global push_back_int
 section .text
 extern malloc
 extern free
 
-; void push_back(VectorInt *v, int data);
+; void push_back_int(VectorInt *v, int data);
 ; rcx = v, rdx = data
-push_back:
+push_back_int:
 
     push rbx
     push rdi
@@ -37,7 +37,7 @@ push_back:
     mov rdi, [r14] ; v->data
     xor rcx, rcx   ; rcx = 0
 
-.loop:
+on_loop:
     cmp rcx, r13 ; judge is great than len
     jg pop_data
     cmp rcx, r13 ; arr index is less than length by 1, so we can use this number
@@ -47,7 +47,7 @@ push_back:
     mov [rbx + rcx * 4], eax
 
     inc rcx ; rcx++
-    jmp .loop
+    jmp on_loop
 
 equal:
     mov [rbx + rcx * 4], r15d
