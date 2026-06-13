@@ -1,9 +1,9 @@
-global replace_vector
+global replace_vector_int
 section .text
 
-; bool replace_vector(VectorInt *v, int old_elem, int new_elem);
+; bool replace_vector_int(VectorInt *v, int old_elem, int new_elem);
 ; rcx = v, edx, old_elem, r8d
-replace_vector:
+replace_vector_int:
 
     push rdi
     push rsi
