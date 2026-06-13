@@ -45,7 +45,7 @@ target_link_libraries(MyProject vector_lib)
 # 库的源文件（不含main）
 set(LIB_SOURCES_VECTOR_DOUBLE
     src/add_vector_double.asm
-    # src/find_vector_double.asm
+    src/find_vector_double.asm
     # src/insert_vector_double.asm
     src/mul_vector_double.asm
     src/pop_vector_double.asm

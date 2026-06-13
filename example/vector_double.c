@@ -96,5 +96,26 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
+    puts("------------------find vector-------------------");
+    double find_val1 = 6;
+    double find_val2 = 10;
+    int idx = 0;
+    if (find_vector_double(v3, find_val1, &idx))
+    {
+        printf("value %lf index = %d\n", find_val1, idx);
+    }
+    else
+    {
+        printf("No find value %lf\n", find_val1);
+    }
+    if (find_vector_double(v3, find_val2, &idx))
+    {
+        printf("value %lf index = %d\n", find_val2, idx);
+    }
+    else
+    {
+        printf("No find value %lf\n", find_val2);
+    }
+    puts("------------------------------------------------");
     return 0;
 }
