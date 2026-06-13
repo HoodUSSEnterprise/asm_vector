@@ -2,7 +2,7 @@ global replace_vector_int
 section .text
 
 ; bool replace_vector_int(VectorInt *v, int old_elem, int new_elem);
-; rcx = v, edx, old_elem, r8d
+; rcx = v, edx = old_elem, r8d = new_data
 replace_vector_int:
 
     push rdi
