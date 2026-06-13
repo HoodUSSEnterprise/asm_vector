@@ -134,7 +134,7 @@ mul_vector_int_cross:
     mov r13, [rdi] ; r13 = v1->data[0]
     imul r13, [rsi + 4] ; r13 *= v2->data[1]
     mov rax, [rdi + 4] ; rax = v1->data[1]
-    imul rax, [rsi] ; rax *= v2->data[2]
+    imul rax, [rsi] ; rax *= v2->data[0]
     sub r13, rax
     mov [r12 + 8], r13
 
