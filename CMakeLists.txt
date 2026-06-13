@@ -41,3 +41,26 @@ target_link_libraries(MyProject vector_lib)
 # add_custom_command(TARGET MyProject POST_BUILD
 #     COMMAND ${CMAKE_C_COMPILER} -S ${CMAKE_CURRENT_SOURCE_DIR}/example/main.c -I${CMAKE_CURRENT_SOURCE_DIR}/include -o ${CMAKE_CURRENT_BINARY_DIR}/main.s
 # )
+# 库的源文件（不含main）
+set(LIB_SOURCES_VECTOR_FLOAT
+    src/add_vector_float.asm
+    # src/find_vector_float.asm
+    # src/insert_vector_float.asm
+    # src/mul_vector_float.asm
+    # src/pop_vector_float.asm
+    # src/push_back_vector_float.asm
+    # src/remove_vector_float.asm
+    # src/replace_vector_float.asm
+    # src/reverse_vector_float.asm
+    # src/scale_vector_float.asm
+    # src/sub_vector_float.asm
+)
+
+# 创建库
+add_library(vector_float_lib ${LIB_SOURCES_VECTOR_FLOAT})
+
+target_include_directories(vector_float_lib PUBLIC include)
+
+# 创建测试可执行文件
+add_executable(vector_float example/vector_float.c)
+target_link_libraries(vector_float vector_float_lib)

@@ -11,4 +11,10 @@ typedef struct VectorInt
     size_t len;
 } VectorInt;
 
+typedef struct VectorFloat
+{
+    float *data;
+    size_t len;
+} VectorFloat;
+
 #endif // MYVECTOR_H
