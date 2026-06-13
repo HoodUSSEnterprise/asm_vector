@@ -1,9 +1,9 @@
-global pop
+global pop_int
 section .text
 
-; void pop(MyVector *v, int *data);
+; void pop_int(MyVector *v, int *data);
 ; rcx = v, rdx = data
-pop:
+pop_int:
 
     push rbx
     push rdi
