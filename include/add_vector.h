@@ -3,8 +3,8 @@
 
 #include "myvector.h"
 
-MyVector *add_vector_int(MyVector *v1, MyVector *v2);
+VectorInt *add_vector_int(VectorInt *v1, VectorInt *v2);
 
-// MyVector *add_vector_double()
+// VectorInt *add_vector_double()
 
 #endif // ADD_VECTOR_H
