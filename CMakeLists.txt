@@ -45,16 +45,16 @@ target_link_libraries(MyProject vector_lib)
 # 库的源文件（不含main）
 set(LIB_SOURCES_VECTOR_DOUBLE
     src/add_vector_double.asm
-    # src/find_vector.asm
-    # src/insert_vector.asm
-    # src/mul_vector.asm
-    # src/pop_vector.asm
-    # src/push_back_vector.asm
-    # src/remove_vector.asm
-    # src/replace_vector.asm
-    # src/reverse_vector.asm
-    # src/scale_vector.asm
-    # src/sub_vector.asm
+    # src/find_vector_double.asm
+    # src/insert_vector_double.asm
+    # src/mul_vector_double.asm
+    # src/pop_vector_double.asm
+    # src/push_back_vector_double.asm
+    # src/remove_vector_double.asm
+    # src/replace_vector_double.asm
+    # src/reverse_vector_double.asm
+    # src/scale_vector_double.asm
+    src/sub_vector_double.asm
 )
 
 # 创建库
