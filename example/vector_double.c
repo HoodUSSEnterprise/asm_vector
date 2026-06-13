@@ -70,5 +70,15 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
+    puts("-------------------pop vector-------------------");
+    double pop_value = 0;
+    pop_double(v3, &pop_value);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%lf ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
     return 0;
 }
