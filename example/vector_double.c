@@ -51,6 +51,14 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
-    ;
+    puts("------------------scale vector------------------");
+    v3 = scale_vector_double(&v1, 2);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < 3; i++)
+    {
+        printf("%lf ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
     return 0;
 }

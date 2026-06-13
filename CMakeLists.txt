@@ -53,7 +53,7 @@ set(LIB_SOURCES_VECTOR_DOUBLE
     # src/remove_vector_double.asm
     # src/replace_vector_double.asm
     # src/reverse_vector_double.asm
-    # src/scale_vector_double.asm
+    src/scale_vector_double.asm
     src/sub_vector_double.asm
 )
 
