@@ -5,4 +5,6 @@
 
 bool replace_vector_int(VectorInt *v, int old_elem, int new_elem);
 
+bool replace_vector_double(VectorDouble *v, double old_elem, double new_elem);
+
 #endif // REPLACE_VECTOR_H

@@ -6,4 +6,6 @@
 
 bool remove_vector_int(VectorInt *v, int removed_value);
 
+bool remove_vector_double(VectorDouble *v, double removed_value);
+
 #endif // REMOVE_VECTOR_H
