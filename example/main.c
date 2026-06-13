@@ -170,7 +170,7 @@ int main(void)
     }
     else
     {
-        printf("hhh");
+        puts("Error insert");
     }
     return 0;
 }
