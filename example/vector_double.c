@@ -80,5 +80,21 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
+    puts("-----------------remove vector------------------");
+    double remove_val = 4;
+    if (remove_vector_double(v3, remove_val))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%lf ", v3->data[i]);
+        }
+    }
+    else
+    {
+        puts("No element remove");
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
     return 0;
 }
