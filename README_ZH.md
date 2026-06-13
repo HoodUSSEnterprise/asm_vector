@@ -8,7 +8,7 @@
 - **动态数组操作**：尾部追加、弹出、按值删除
 - **搜索**：按值查找元素、替换元素
 - **汇编实现**：所有运算使用手写优化的 NASM 汇编（x64，win64 ABI）
-- **C API**：基于 `MyVector` 结构体的简洁接口，包含 `int *data` 和 `size_t len`
+- **C API**：基于 `VectorInt` 结构体的简洁接口，包含 `int *data` 和 `size_t len`
 
 ## API 一览
 

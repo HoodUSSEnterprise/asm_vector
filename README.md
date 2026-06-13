@@ -8,7 +8,7 @@ A C vector library with x64 NASM assembly implementations for high-performance v
 - **Dynamic array ops**: push back, pop, remove by value
 - **Search**: find element by value, replace element
 - **Assembly-powered**: all operations implemented in hand-optimized NASM (x64, win64 ABI)
-- **C API**: simple `MyVector` struct interface with `int *data` and `size_t len`
+- **C API**: simple `VectorInt` struct interface with `int *data` and `size_t len`
 
 ## API Overview
 
