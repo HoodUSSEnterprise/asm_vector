@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; void reverse_vector(MyVector *v);
+; void reverse_vector(VectorInt *v);
 ; rcx = v
 reverse_vector:
     
