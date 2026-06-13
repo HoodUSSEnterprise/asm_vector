@@ -19,10 +19,10 @@ int main(void)
         data[i] = i + 1;
         data1[i] = 4 - i;
     }
-    MyVector v1 = {data, 3};
-    MyVector v2 = {data1, 3};
+    VectorInt v1 = {data, 3};
+    VectorInt v2 = {data1, 3};
     puts("-------------------add vector-------------------");
-    MyVector *v3 = add_vector_int(&v1, &v2);
+    VectorInt *v3 = add_vector_int(&v1, &v2);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < 3; i++)
     {
