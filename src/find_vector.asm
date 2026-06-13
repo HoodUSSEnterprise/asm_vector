@@ -1,9 +1,9 @@
-global find_vector
+global find_vector_int
 section .text
 
-; bool find_vector(MyVector *v, int elem, int *index);
+; bool find_vector_int(MyVector *v, int elem, int *index);
 ; rcx = v, edx = elem, r8 = index
-find_vector:
+find_vector_int:
 
     push rbx
     push rdi
