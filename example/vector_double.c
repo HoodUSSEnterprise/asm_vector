@@ -39,5 +39,18 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
+    puts("-------------------mul vector-------------------");
+    double val = mul_vector_double_dot(&v1, &v2);
+    printf("val = %lf\n", val);
+    putchar('\n');
+    v3 = mul_vector_double_cross(&v1, &v2);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < 3; i++)
+    {
+        printf("%lf ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    ;
     return 0;
 }
