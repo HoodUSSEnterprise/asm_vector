@@ -1,12 +1,12 @@
-global remove_vector
+global remove_vector_int
 section .text
 extern malloc
 extern free
 
-; bool remove_vector(MyVector *v, int removed_value);
+; bool remove_vector_int(MyVector *v, int removed_value);
 ; rcx = v, edx = removed_value
 
-remove_vector:
+remove_vector_int:
 
     push rbx
     push rdi
