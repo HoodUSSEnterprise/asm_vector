@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-;MyVector *sub_vector(MyVector *v1, MyVector *v2);
+;VectorInt *sub_vector(VectorInt *v1, VectorInt *v2);
 ;rcx = v1, rdx = v2
 sub_vector:
 
