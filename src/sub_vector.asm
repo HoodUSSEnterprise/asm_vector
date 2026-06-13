@@ -28,20 +28,20 @@ sub_vector_int:
 
     ; check v1 and v2
     test r14, r14
-    jz .null_ptr
+    jz null_ptr
     test r15, r15
-    jz .null_ptr
+    jz null_ptr
 
     ; check v1 and v2 length
     mov r13, [r14 + 8] ; rbx = v1->len
     cmp r13, [r15 + 8] ; judge v1->len is or not equal to v2->len
-    jne .null_ptr
+    jne null_ptr
 
     ; malloc for res, 16 byte
     mov rcx, 16
     call malloc
     test rax, rax
-    jz .failed_res
+    jz failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
     ; malloc for data, len * 4 byte
@@ -49,7 +49,7 @@ sub_vector_int:
     shl rcx, 2
     call malloc
     test rax, rax
-    jz .failed_data
+    jz failed_data
 
     ; set the result value
     mov [rbx], rax ; result->data
@@ -61,33 +61,33 @@ sub_vector_int:
     mov r12, [rbx] ; r12 = result->data
     xor rcx, rcx ; int i = 0
 
-.loop:
+on_loop:
     cmp rcx, r13 ; i < len
-    jge .end
+    jge end
 
     mov eax, [rdi + rcx * 4]
     sub eax, [rsi + rcx * 4]
     mov [r12 + rcx * 4], eax
 
     inc rcx ; i++
-    jmp .loop
+    jmp on_loop
 
 
-.end:
+end:
     mov rax, rbx
     jmp pop_data
 
-.failed_res:
+failed_res:
     mov rax, 0
     jmp pop_data
 
-.failed_data:
+failed_data:
     mov rcx, rbx
     call free
     mov rax, 0
     jmp pop_data
 
-.null_ptr:
+null_ptr:
     mov rax, 0
     jmp pop_data
 
