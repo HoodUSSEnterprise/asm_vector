@@ -1,11 +1,11 @@
-global mul_vector_dot, mul_vector_cross
+global mul_vector_int_dot, mul_vector_int_cross
 section .text
 extern malloc
 extern free
 
-; int mul_vector_dot(MyVector *v1, MyVector *v2);
+; int mul_vector_int_dot(MyVector *v1, MyVector *v2);
 ; rcx = v1, rdx = v2
-mul_vector_dot:
+mul_vector_int_dot:
     push rbx
     push rdi
     push rsi
@@ -57,9 +57,9 @@ pop_data_dot:
     pop rbx
     ret
 
-; MyVector *mul_vector_cross(MyVector *v1, MyVector *v2);
+; MyVector *mul_vector_int_cross(MyVector *v1, MyVector *v2);
 ; rcx = v1, rdx = v2
-mul_vector_cross:
+mul_vector_int_cross:
     push rbx
     push rdi
     push rsi
