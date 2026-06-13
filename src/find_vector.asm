@@ -1,9 +1,9 @@
-global find_vector
+global find_vector_int
 section .text
 
-; bool find_vector(VectorInt *v, int elem, int *index);
+; bool find_vector_int(VectorInt *v, int elem, int *index);
 ; rcx = v, edx = elem, r8 = index
-find_vector:
+find_vector_int:
 
     push rbx
     push rdi
@@ -22,14 +22,14 @@ find_vector:
 
     xor rcx, rcx ; i = 0
 
-.loop
+on_loop
     cmp rcx, rdi ; i < rdi
     jge no
     cmp [rsi + rcx * 4], r15d ; compare v->data[i] and elem
     je yes
 
     inc rcx; ; i++
-    jmp .loop
+    jmp on_loop
 
 
 yes:
