@@ -3,6 +3,6 @@
 
 #include "myvector.h"
 
-void push_back(MyVector *v, int data);
+void push_back(VectorInt *v, int data);
 
 #endif // PUSH_BACK_VECTOR_H
