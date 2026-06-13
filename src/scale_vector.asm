@@ -47,7 +47,7 @@ scale_vector_int:
 
     ; initialize 
     mov rdi, [r14] ; rdi = v1->data
-    mov esi, r15d ; rsi = v2->data
+    mov esi, r15d ; esi = scale
     mov r12, [rbx] ; r12 = result->data
     xor rcx, rcx ; int i = 0
 
