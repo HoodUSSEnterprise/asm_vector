@@ -47,6 +47,7 @@ next:
     ; malloc new res->data
     mov rcx, r13
     sub rcx, rdi
+    shl rcx, 2
     call malloc
     test rax, rax
     jz failed_data
