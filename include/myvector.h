@@ -5,10 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct MyVector
+typedef struct VectorInt
 {
     int *data;
     size_t len;
-} MyVector;
+} VectorInt;
 
 #endif // MYVECTOR_H
