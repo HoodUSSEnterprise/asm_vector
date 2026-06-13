@@ -22,7 +22,7 @@ int main(void)
     VectorInt v1 = {data, 3};
     VectorInt v2 = {data1, 3};
     puts("-------------------add vector-------------------");
-    VectorInt *v3 = add_vector_int(&v1, &v2);
+    VectorInt *v3 = add_vector(&v1, &v2);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < 3; i++)
     {
@@ -31,7 +31,7 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("-------------------sub vector-------------------");
-    v3 = sub_vector_int(&v1, &v2);
+    v3 = sub_vector(&v1, &v2);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < 3; i++)
     {
@@ -40,10 +40,10 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("-------------------mul vector-------------------");
-    int val = mul_vector_int_dot(&v1, &v2);
+    int val = mul_vector_dot(&v1, &v2);
     printf("val = %d\n", val);
     putchar('\n');
-    v3 = mul_vector_int_cross(&v1, &v2);
+    v3 = mul_vector_cross(&v1, &v2);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < 3; i++)
     {
@@ -52,7 +52,7 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("------------------scale vector------------------");
-    v3 = scale_vector_int(&v1, 2);
+    v3 = scale_vector(&v1, 2);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < 3; i++)
     {
@@ -61,8 +61,8 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("----------------push_back vector----------------");
-    push_back_int(v3, 4);
-    push_back_int(v3, 5);
+    push_back(v3, 4);
+    push_back(v3, 5);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < v3->len; i++)
     {
@@ -72,7 +72,7 @@ int main(void)
     puts("------------------------------------------------");
     puts("-------------------pop vector-------------------");
     int pop_value = 0;
-    pop_int(v3, &pop_value);
+    pop(v3, &pop_value);
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < v3->len; i++)
     {
@@ -82,7 +82,7 @@ int main(void)
     puts("------------------------------------------------");
     puts("-----------------remove vector------------------");
     int remove_val = 4;
-    if (remove_vector_int(v3, remove_val))
+    if (remove_vector(v3, remove_val))
     {
         printf("%zu\n", v3->len);
         for (size_t i = 0; i < v3->len; i++)
@@ -100,7 +100,7 @@ int main(void)
     int find_val1 = 6;
     int find_val2 = 10;
     int idx = 0;
-    if (find_vector_int(v3, find_val1, &idx))
+    if (find_vector(v3, find_val1, &idx))
     {
         printf("value %d index = %d\n", find_val1, idx);
     }
@@ -108,7 +108,7 @@ int main(void)
     {
         printf("No find value %d\n", find_val1);
     }
-    if (find_vector_int(v3, find_val2, &idx))
+    if (find_vector(v3, find_val2, &idx))
     {
         printf("value %d index = %d\n", find_val2, idx);
     }
@@ -117,5 +117,60 @@ int main(void)
         printf("No find value %d\n", find_val2);
     }
     puts("------------------------------------------------");
+    puts("----------------replace vector------------------");
+    for (int i = 0; i < 10; i++)
+    {
+        push_back(v3, i + 1);
+    }
+    puts("Before:");
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
+    int old_data = 6;
+    int new_data = 9;
+    puts("After");
+    if (replace_vector(v3, old_data, new_data))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%d ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        printf("No find value %d\n", old_data);
+    }
+    puts("------------------------------------------------");
+    puts("----------------reverse vector------------------");
+    reverse_vector(v3);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%d ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    puts("-----------------insert vector------------------");
+    size_t insert_pos = 2;
+    // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
+    //        v3, v3->data, v3->len, insert_pos);
+    if (insert_vector(v3, insert_pos, 4))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%d ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        puts("Error insert");
+    }
     return 0;
 }
