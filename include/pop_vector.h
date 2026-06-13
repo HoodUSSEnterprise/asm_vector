@@ -5,4 +5,6 @@
 
 void pop_int(VectorInt *v, int *data);
 
+void pop_double(VectorDouble *v, double *data);
+
 #endif // POP_VECTOR_H
