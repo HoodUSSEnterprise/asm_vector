@@ -27,11 +27,10 @@ insert_vector:
     test rdi, rdi ; jugde nullptr
     jz pop_data
 
-    sub r12, 1 ; v->len - 1
-    cmp r15, r12 ; judge parament
+    cmp r15, r12 ; judge parament, pos < v->len
     jge error_pos
 
-    add r12, 2 ; v->len + 1
+    add r12, 1 ; v->len + 1
     mov rcx, r12 ; res->len
     shl rcx, 2 ; rcx *= 4
     call malloc
