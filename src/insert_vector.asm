@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; bool insert_vector(MyVector *v, size_t pos, int value);
+; bool insert_vector(VectorInt *v, size_t pos, int value);
 ; rcx = v, rdx = pos, r8d = value
 insert_vector:
     
