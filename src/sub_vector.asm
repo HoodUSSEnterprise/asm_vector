@@ -1,11 +1,11 @@
-global sub_vector
+global sub_vector_int
 section .text
 extern malloc
 extern free
 
-;MyVector *sub_vector(MyVector *v1, MyVector *v2);
+;MyVector *sub_vector_int(MyVector *v1, MyVector *v2);
 ;rcx = v1, rdx = v2
-sub_vector:
+sub_vector_int:
 
     ; [rcx] = v1.data
     ; [rcx + 8] = v1->len
