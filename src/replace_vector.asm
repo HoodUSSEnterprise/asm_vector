@@ -1,7 +1,7 @@
 global replace_vector
 section .text
 
-; bool replace_vector(MyVector *v, int old_elem, int new_elem);
+; bool replace_vector(VectorInt *v, int old_elem, int new_elem);
 ; rcx = v, edx, old_elem, r8d
 replace_vector:
 
