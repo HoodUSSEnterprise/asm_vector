@@ -44,16 +44,16 @@ target_link_libraries(MyProject vector_lib)
 # 库的源文件（不含main）
 set(LIB_SOURCES_VECTOR_FLOAT
     src/add_vector_float.asm
-    # src/find_vector_float.asm
-    # src/insert_vector_float.asm
-    # src/mul_vector_float.asm
-    # src/pop_vector_float.asm
-    # src/push_back_vector_float.asm
-    # src/remove_vector_float.asm
-    # src/replace_vector_float.asm
-    # src/reverse_vector_float.asm
-    # src/scale_vector_float.asm
-    # src/sub_vector_float.asm
+    src/find_vector_float.asm
+    src/insert_vector_float.asm
+    src/mul_vector_float.asm
+    src/pop_vector_float.asm
+    src/push_back_vector_float.asm
+    src/remove_vector_float.asm
+    src/replace_vector_float.asm
+    src/reverse_vector_float.asm
+    src/scale_vector_float.asm
+    src/sub_vector_float.asm
 )
 
 # 创建库
