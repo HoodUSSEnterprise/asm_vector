@@ -1,11 +1,11 @@
-global add_vector
+global add_vector_int
 section .text
 extern malloc
 extern free
 
-;MyVector *add_vector(MyVector *v1, MyVector *v2);
+;MyVector *add_vector_int(MyVector *v1, MyVector *v2);
 ;rcx = v1, rdx = v2
-add_vector:
+add_vector_int:
 
     ; [rcx] = v1.data
     ; [rcx + 8] = v1->len
