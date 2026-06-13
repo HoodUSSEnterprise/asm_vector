@@ -1,7 +1,7 @@
 global find_vector_int
 section .text
 
-; bool find_vector_int(MyVector *v, int elem, int *index);
+; bool find_vector_int(VectorInt *v, int elem, int *index);
 ; rcx = v, edx = elem, r8 = index
 find_vector_int:
 
