@@ -1,7 +1,7 @@
 global pop_int
 section .text
 
-; void pop_int(MyVector *v, int *data);
+; void pop_int(VectorInt *v, int *data);
 ; rcx = v, rdx = data
 pop_int:
 
