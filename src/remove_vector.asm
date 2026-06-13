@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; bool remove_vector(MyVector *v, int removed_value);
+; bool remove_vector(VectorInt *v, int removed_value);
 ; rcx = v, edx = removed_value
 
 remove_vector:
