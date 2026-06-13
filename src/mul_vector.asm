@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; int mul_vector_int_dot(MyVector *v1, MyVector *v2);
+; int mul_vector_int_dot(VectorInt *v1, VectorInt *v2);
 ; rcx = v1, rdx = v2
 mul_vector_int_dot:
     push rbx
@@ -57,7 +57,7 @@ pop_data_dot:
     pop rbx
     ret
 
-; MyVector *mul_vector_int_cross(MyVector *v1, MyVector *v2);
+; VectorInt *mul_vector_int_cross(VectorInt *v1, VectorInt *v2);
 ; rcx = v1, rdx = v2
 mul_vector_int_cross:
     push rbx
