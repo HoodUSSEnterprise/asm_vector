@@ -1,12 +1,12 @@
-global scale_vector
+global scale_vector_int
 section .text
 extern malloc
 extern free
 
-; MyVector *scale_vector(MyVector *v, int scale);
+; MyVector *scale_vector_int(MyVector *v, int scale);
 ; rcx = v, edx = scale
 
-scale_vector:
+scale_vector_int:
 
     push rbx
     push rdi
