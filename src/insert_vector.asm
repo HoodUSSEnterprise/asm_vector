@@ -1,11 +1,11 @@
-global insert_vector
+global insert_vector_int
 section .text
 extern malloc
 extern free
 
-; bool insert_vector(VectorInt *v, size_t pos, int value);
+; bool insert_vector_int(VectorInt *v, size_t pos, int value);
 ; rcx = v, rdx = pos, r8d = value
-insert_vector:
+insert_vector_int:
     
     push rbx
     push rdi
