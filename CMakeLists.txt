@@ -38,3 +38,6 @@ target_include_directories(vector_lib PUBLIC include)
 add_executable(MyProject example/main.c)
 target_link_libraries(MyProject vector_lib)
 # add_executable(MyProject src/main.c src/add_vector.asm)
+# add_custom_command(TARGET MyProject POST_BUILD
+#     COMMAND ${CMAKE_C_COMPILER} -S ${CMAKE_CURRENT_SOURCE_DIR}/example/main.c -I${CMAKE_CURRENT_SOURCE_DIR}/include -o ${CMAKE_CURRENT_BINARY_DIR}/main.s
+# )

@@ -3,14 +3,13 @@ section .text
 extern malloc
 extern free
 
-; void insert_vector(MyVector *v, size_t pos, int value);
+; bool insert_vector(MyVector *v, size_t pos, int value);
 ; rcx = v, rdx = pos, r8d = value
 insert_vector:
     
     push rbx
     push rdi
     push rsi
-    push r11
     push r12
     push r13
     push r14
@@ -19,8 +18,14 @@ insert_vector:
     mov r14, rcx ; r14 = v
     mov r15, rdx ; r15 = pos
     mov r13d, r8d ; r13d = value
-    mov r11, [rcx] ; r11 = v->data
-    mov r12, [rcx + 8] ; r14 = v->len
+    mov rdi, [r14] ; rdi = v->data
+    mov r12, [r14 + 8] ; r12 = v->len
+
+    test r14, r14 ; jugde nullptr
+    jz pop_data
+
+    test rdi, rdi ; jugde nullptr
+    jz pop_data
 
     sub r12, 1 ; v->len - 1
     cmp r15, r12 ; judge parament
@@ -45,7 +50,7 @@ insert_loop:
     cmp rcx, r15 ; insert pos
     je insert_number
 
-    mov eax, [r11 + rsi * 4]
+    mov eax, [rdi + rsi * 4]
     mov [rbx + rcx * 4], eax
 
     inc rcx ; i++
@@ -53,7 +58,7 @@ insert_loop:
     jmp insert_loop
 
 insert_number:
-    mov [rbx + rcx * 4], r13
+    mov [rbx + rcx * 4], r13d
     inc rcx
     jmp insert_loop
 
@@ -63,6 +68,10 @@ failed_data:
 
 error_pos:
     mov rax, 0
+    jmp pop_data
+
+test_data:
+    mov rax, 1
     jmp pop_data
 
 yes:
@@ -77,7 +86,6 @@ pop_data:
     pop r14
     pop r13
     pop r12
-    pop r11
     pop rsi
     pop rdi
     pop rbx

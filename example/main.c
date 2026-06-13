@@ -156,12 +156,21 @@ int main(void)
     putchar('\n');
     puts("------------------------------------------------");
     puts("-----------------insert vector------------------");
-    insert_vector(v3, 2, 4);
-    printf("%zu\n", v3->len);
-    for (size_t i = 0; i < v3->len; i++)
+    size_t insert_pos = 2;
+    // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
+    //        v3, v3->data, v3->len, insert_pos);
+    if (insert_vector(v3, insert_pos, 4))
     {
-        printf("%d ", v3->data[i]);
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%d ", v3->data[i]);
+        }
+        putchar('\n');
     }
-    putchar('\n');
+    else
+    {
+        printf("hhh");
+    }
     return 0;
 }
