@@ -4,6 +4,6 @@
 #include "find_vector.h"
 #include "myvector.h"
 
-bool remove_vector(MyVector *v, int removed_value);
+bool remove_vector(VectorInt *v, int removed_value);
 
 #endif // REMOVE_VECTOR_H
