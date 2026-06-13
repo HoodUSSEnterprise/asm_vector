@@ -3,7 +3,7 @@ section .text
 extern malloc
 extern free
 
-; MyVector *scale_vector(MyVector *v, int scale);
+; VectorInt *scale_vector(VectorInt *v, int scale);
 ; rcx = v, edx = scale
 
 scale_vector:
