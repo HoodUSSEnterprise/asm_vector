@@ -3,6 +3,6 @@
 
 #include "myvector.h"
 
-void pop(MyVector *v, int *data);
+void pop_int(MyVector *v, int *data);
 
 #endif // POP_VECTOR_H
