@@ -22,7 +22,7 @@ find_vector_int:
 
     xor rcx, rcx ; i = 0
 
-on_loop
+on_loop:
     cmp rcx, rdi ; i < rdi
     jge no
     cmp [rsi + rcx * 4], r15d ; compare v->data[i] and elem
