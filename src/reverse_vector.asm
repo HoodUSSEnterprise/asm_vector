@@ -1,11 +1,11 @@
-global reverse_vector
+global reverse_vector_int
 section .text
 extern malloc
 extern free
 
-; void reverse_vector(VectorInt *v);
+; void reverse_vector_int(VectorInt *v);
 ; rcx = v
-reverse_vector:
+reverse_vector_int:
     
     push rdi
     push rsi
