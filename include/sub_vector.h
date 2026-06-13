@@ -3,6 +3,6 @@
 
 #include "myvector.h"
 
-MyVector *sub_vector(MyVector *v1, MyVector *v2);
+MyVector *sub_vector_int(MyVector *v1, MyVector *v2);
 
 #endif // SUB_VECTOR_H
