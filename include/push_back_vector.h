@@ -5,7 +5,8 @@
 
 void push_back_int(VectorInt *v, int data);
 
-void push_back_double(VectorDouble *v, double data);
 void push_back_float(VectorFloat *v, float data);
+
+void push_back_double(VectorDouble *v, double data);
 
 #endif // PUSH_BACK_VECTOR_H
