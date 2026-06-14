@@ -4,13 +4,13 @@ extern malloc
 extern free
 
 ;VectorFloat *add_vector_float(VectorFloat *v1, VectorFloat *v2);
-;rdi = v1, rdx = v2
+;rdi = v1, rsi = v2
 add_vector_float:
 
     ; [rdi] = v1.data
     ; [rdi + 8] = v1->len
-    ; [rdx] = v2.data
-    ; [rdx + 8] = v2->len
+    ; [rsi] = v2.data
+    ; [rsi + 8] = v2->len
 
     push rbx
     push r12
@@ -20,7 +20,7 @@ add_vector_float:
 
     ; use r14 and r15 to save paraments
     mov r14, rdi ; r14 = v1
-    mov r15, rdx ; r15 = v2
+    mov r15, rsi ; r15 = v2
 
     ; check v1 and v2
     test r14, r14
@@ -52,8 +52,8 @@ add_vector_float:
     mov [rbx + 8], r13 ; result->len
 
     ; initialize 
-    mov r8, [r14] ; r8 = v1->data
-    mov r9, [r15] ; rsi = v2->data
+    mov rdi, [r14] ; rdi = v1->data
+    mov rsi, [r15] ; rsi = v2->data
     mov r12, [rbx] ; r12 = result->data
     xor rcx, rcx ; int i = 0
 
@@ -61,8 +61,8 @@ on_loop:
     cmp rcx, r13 ; i < len
     jge end
 
-    movss xmm0, [r8 + rcx * 4]
-    addss xmm0, [r9 + rcx * 4]
+    movss xmm0, [rdi + rcx * 4]
+    addss xmm0, [rsi + rcx * 4]
     movss [r12 + rcx * 4], xmm0
 
     inc rcx ; i++
