@@ -26,17 +26,17 @@ include_directories(include)
 
 # 库的源文件（从对应平台目录读取）
 set(LIB_SOURCES_VECTOR_INT
-    src/${PLATFORM_DIR}/add_vector.asm
-    src/${PLATFORM_DIR}/find_vector.asm
-    src/${PLATFORM_DIR}/insert_vector.asm
-    src/${PLATFORM_DIR}/mul_vector.asm
-    src/${PLATFORM_DIR}/pop_vector.asm
-    src/${PLATFORM_DIR}/push_back_vector.asm
-    src/${PLATFORM_DIR}/remove_vector.asm
-    src/${PLATFORM_DIR}/replace_vector.asm
-    src/${PLATFORM_DIR}/reverse_vector.asm
-    src/${PLATFORM_DIR}/scale_vector.asm
-    src/${PLATFORM_DIR}/sub_vector.asm
+    src/${PLATFORM_DIR}/add_vector_int.asm
+    src/${PLATFORM_DIR}/find_vector_int.asm
+    src/${PLATFORM_DIR}/insert_vector_int.asm
+    src/${PLATFORM_DIR}/mul_vector_int.asm
+    src/${PLATFORM_DIR}/pop_vector_int.asm
+    src/${PLATFORM_DIR}/push_back_vector_int.asm
+    src/${PLATFORM_DIR}/remove_vector_int.asm
+    src/${PLATFORM_DIR}/replace_vector_int.asm
+    src/${PLATFORM_DIR}/reverse_vector_int.asm
+    src/${PLATFORM_DIR}/scale_vector_int.asm
+    src/${PLATFORM_DIR}/sub_vector_int.asm
 )
 
 # 创建库
