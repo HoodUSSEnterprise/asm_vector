@@ -16,5 +16,10 @@ typedef struct VectorDouble
     double *data;
     size_t len;
 } VectorDouble;
+typedef struct VectorFloat
+{
+    float *data;
+    size_t len;
+} VectorFloat;
 
 #endif // MYVECTOR_H
