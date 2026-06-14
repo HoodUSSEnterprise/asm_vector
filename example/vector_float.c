@@ -117,60 +117,60 @@ int main(void)
         printf("No find value %f\n", find_val2);
     }
     puts("------------------------------------------------");
-    //     puts("----------------replace vector------------------");
-    //     for (int i = 0; i < 10; i++)
-    //     {
-    //         push_back_float(v3, i + 1);
-    //     }
-    //     puts("Before:");
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < v3->len; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
-    //     float old_data = 6;
-    //     int new_data = 9;
-    //     puts("After");
-    //     if (replace_vector_float(v3, old_data, new_data))
-    //     {
-    //         printf("%zu\n", v3->len);
-    //         for (size_t i = 0; i < v3->len; i++)
-    //         {
-    //             printf("%f ", v3->data[i]);
-    //         }
-    //         putchar('\n');
-    //     }
-    //     else
-    //     {
-    //         printf("No find value %f\n", old_data);
-    //     }
-    //     puts("------------------------------------------------");
-    //     puts("----------------reverse vector------------------");
-    //     reverse_vector_float(v3);
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < v3->len; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
-    //     puts("------------------------------------------------");
-    //     puts("-----------------insert vector------------------");
-    //     size_t insert_pos = 2;
-    //     // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
-    //     //        v3, v3->data, v3->len, insert_pos);
-    //     if (insert_vector_float(v3, insert_pos, 4))
-    //     {
-    //         printf("%zu\n", v3->len);
-    //         for (size_t i = 0; i < v3->len; i++)
-    //         {
-    //             printf("%f ", v3->data[i]);
-    //         }
-    //         putchar('\n');
-    //     }
-    //     else
-    //     {
-    //         puts("Error insert");
-    //    }
+    puts("----------------replace vector------------------");
+    for (int i = 0; i < 10; i++)
+    {
+        push_back_float(v3, i + 1);
+    }
+    puts("Before:");
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
+    float old_data = 6;
+    int new_data = 9;
+    puts("After");
+    if (replace_vector_float(v3, old_data, new_data))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%f ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        printf("No find value %f\n", old_data);
+    }
+    puts("------------------------------------------------");
+    puts("----------------reverse vector------------------");
+    reverse_vector_float(v3);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    puts("-----------------insert vector------------------");
+    size_t insert_pos = 2;
+    // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
+    //        v3, v3->data, v3->len, insert_pos);
+    if (insert_vector_float(v3, insert_pos, 4))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%f ", v3->data[i]);
+        }
+        putchar('\n');
+    }
+    else
+    {
+        puts("Error insert");
+    }
     return 0;
 }
