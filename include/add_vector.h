@@ -5,7 +5,8 @@
 
 VectorInt *add_vector_int(VectorInt *v1, VectorInt *v2);
 
-VectorDouble *add_vector_double(VectorDouble *v1, VectorDouble *v2);
 VectorFloat *add_vector_float(VectorFloat *v1, VectorFloat *v2);
+
+VectorDouble *add_vector_double(VectorDouble *v1, VectorDouble *v2);
 
 #endif // ADD_VECTOR_H
