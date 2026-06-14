@@ -27,12 +27,12 @@ include_directories(include)
 # Float 版本
 set(LIB_SOURCES_VECTOR_FLOAT
      src/${PLATFORM_DIR}/add_vector_float.asm
-#     src/${PLATFORM_DIR}/find_vector_float.asm
+     src/${PLATFORM_DIR}/find_vector_float.asm
 #     src/${PLATFORM_DIR}/insert_vector_float.asm
      src/${PLATFORM_DIR}/mul_vector_float.asm
      src/${PLATFORM_DIR}/pop_vector_float.asm
      src/${PLATFORM_DIR}/push_back_vector_float.asm
-#     src/${PLATFORM_DIR}/remove_vector_float.asm
+     src/${PLATFORM_DIR}/remove_vector_float.asm
 #     src/${PLATFORM_DIR}/replace_vector_float.asm
 #     src/${PLATFORM_DIR}/reverse_vector_float.asm
      src/${PLATFORM_DIR}/scale_vector_float.asm

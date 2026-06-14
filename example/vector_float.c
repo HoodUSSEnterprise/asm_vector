@@ -79,44 +79,44 @@ int main(void)
         printf("%f ", v3->data[i]);
     }
     putchar('\n');
-    //     puts("------------------------------------------------");
-    //     puts("-----------------remove vector------------------");
-    //     float remove_val = 4;
-    //     if (remove_vector_float(v3, remove_val))
-    //     {
-    //         printf("%zu\n", v3->len);
-    //         for (size_t i = 0; i < v3->len; i++)
-    //         {
-    //             printf("%f ", v3->data[i]);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         puts("No element remove");
-    //     }
-    //     putchar('\n');
-    //     puts("------------------------------------------------");
-    //     puts("------------------find vector-------------------");
-    //     float find_val1 = 6;
-    //     float find_val2 = 10;
-    //     int idx = 0;
-    //     if (find_vector_float(v3, find_val1, &idx))
-    //     {
-    //         printf("value %f index = %d\n", find_val1, idx);
-    //     }
-    //     else
-    //     {
-    //         printf("No find value %f\n", find_val1);
-    //     }
-    //     if (find_vector_float(v3, find_val2, &idx))
-    //     {
-    //         printf("value %f index = %d\n", find_val2, idx);
-    //     }
-    //     else
-    //     {
-    //         printf("No find value %f\n", find_val2);
-    //     }
-    //     puts("------------------------------------------------");
+    puts("------------------------------------------------");
+    puts("-----------------remove vector------------------");
+    float remove_val = 4;
+    if (remove_vector_float(v3, remove_val))
+    {
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
+        {
+            printf("%f ", v3->data[i]);
+        }
+    }
+    else
+    {
+        puts("No element remove");
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    puts("------------------find vector-------------------");
+    float find_val1 = 6;
+    float find_val2 = 10;
+    int idx = 0;
+    if (find_vector_float(v3, find_val1, &idx))
+    {
+        printf("value %f index = %d\n", find_val1, idx);
+    }
+    else
+    {
+        printf("No find value %f\n", find_val1);
+    }
+    if (find_vector_float(v3, find_val2, &idx))
+    {
+        printf("value %f index = %d\n", find_val2, idx);
+    }
+    else
+    {
+        printf("No find value %f\n", find_val2);
+    }
+    puts("------------------------------------------------");
     //     puts("----------------replace vector------------------");
     //     for (int i = 0; i < 10; i++)
     //     {
