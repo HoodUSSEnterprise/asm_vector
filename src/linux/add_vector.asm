@@ -4,7 +4,7 @@ extern malloc
 extern free
 
 ;VectorInt *add_vector_int(VectorInt *v1, VectorInt *v2);
-;rcx = v1, rdx = v2
+;rdi = v1, rsi = v2
 add_vector_int:
 
     ; [rdi] = v1.data
@@ -52,8 +52,8 @@ add_vector_int:
     mov [rbx + 8], r13 ; result->len
 
     ; initialize 
-    mov r8, [r14] ; r8 = v1->data
-    mov r9, [r15] ; r9 = v2->data
+    mov rdi, [r14] ; rdi = v1->data
+    mov rsi, [r15] ; rsi = v2->data
     mov r12, [rbx] ; r12 = result->data
     xor rcx, rcx ; int i = 0
 
@@ -61,8 +61,8 @@ on_loop:
     cmp rcx, r13 ; i < len
     jge end
 
-    mov eax, [r8 + rcx * 4]
-    add eax, [r9 + rcx * 4]
+    mov eax, [rdi + rcx * 4]
+    add eax, [rsi + rcx * 4]
     mov [r12 + rcx * 4], eax
 
     inc rcx ; i++
