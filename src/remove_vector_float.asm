@@ -1,12 +1,12 @@
-global remove_vector_int
+global remove_vector_float
 section .text
 extern malloc
 extern free
 
-; bool remove_vector_int(VectorInt *v, int removed_value);
-; rcx = v, edx = removed_value
+; bool remove_vector_float(VectorFloat *v, float removed_value);
+; rcx = v, xmm1 = removed_value
 
-remove_vector_int:
+remove_vector_float:
 
     push rbx
     push rdi
@@ -15,9 +15,12 @@ remove_vector_int:
     push r13
     push r14
     push r15
+    sub rsp, 8
+
+    movss [rsp], xmm15
 
     mov r14, rcx ; r14 = v
-    mov r15d, edx ; r15d = removed_value
+    movss xmm15, xmm1 ; xmm15 = removed_value
     mov r13, [rcx + 8] ; r13 = v->len
 
     xor rdi, rdi ; calc number of removed_value
@@ -27,7 +30,8 @@ remove_vector_int:
 calc_number:
     cmp rcx, r13 ; i < len
     jge next
-    cmp [rsi + rcx * 4], r15d ; data[i] == removed_value
+    movss xmm0, [rsi + rcx * 4]
+    ucomiss xmm0, xmm15 ; judge xmm0 and elem
     je count_plus
 
     inc rcx
@@ -60,11 +64,12 @@ next:
 change_value:
     cmp rcx, r13 ; i < len
     jge yes
-    cmp [rsi + rcx * 4], r15d ; compare with every element in orgin array
+    movss xmm2, [rsi + rcx * 4]
+    ucomiss xmm2, xmm15 ; judge xmm0 and elem
     je change
 
-    mov eax, [rsi + rcx * 4]
-    mov [rbx + rdx * 4], eax
+    movss xmm0, [rsi + rcx * 4]
+    movss [rbx + rdx * 4], xmm0
     inc rdx ; j++
     inc rcx ; i++
     jmp change_value
@@ -99,6 +104,8 @@ failed_data:
     jmp pop_data
 
 pop_data:
+    movss xmm15, [rsp]
+    add rsp, 8
     pop r15
     pop r14
     pop r13

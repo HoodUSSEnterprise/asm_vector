@@ -1,11 +1,11 @@
-global insert_vector_int
+global insert_vector_double
 section .text
 extern malloc
 extern free
 
-; bool insert_vector_int(VectorInt *v, size_t pos, int value);
-; rcx = v, rdx = pos, r8d = value
-insert_vector_int:
+; bool insert_vector_double(VectorDouble *v, size_t pos, double value);
+; rcx = v, rdx = pos, xmm2 = value
+insert_vector_double:
     
     push rbx
     push rdi
@@ -14,10 +14,13 @@ insert_vector_int:
     push r13
     push r14
     push r15
+    sub rsp, 8
+
+    movsd [rsp], xmm15
 
     mov r14, rcx ; r14 = v
     mov r15, rdx ; r15 = pos
-    mov r13d, r8d ; r13d = value
+    movsd xmm15, xmm2 ; xmm15 = value
     mov rdi, [r14] ; rdi = v->data
     mov r12, [r14 + 8] ; r12 = v->len
 
@@ -32,7 +35,7 @@ insert_vector_int:
 
     add r12, 1 ; v->len + 1
     mov rcx, r12 ; res->len
-    shl rcx, 2 ; rcx *= 4
+    shl rcx, 3 ; rcx *= 8
     call malloc
     test rax, rax ; judge is or not nullptr
     jz failed_data
@@ -49,15 +52,15 @@ insert_loop:
     cmp rcx, r15 ; insert pos
     je insert_number
 
-    mov eax, [rdi + rsi * 4]
-    mov [rbx + rcx * 4], eax
+    movsd xmm0, [rdi + rsi * 8]
+    movsd [rbx + rcx * 8], xmm0
 
     inc rcx ; i++
     inc rsi ; j++
     jmp insert_loop
 
 insert_number:
-    mov [rbx + rcx * 4], r13d
+    movsd [rbx + rcx * 8], xmm15
     inc rcx
     jmp insert_loop
 
@@ -81,6 +84,8 @@ yes:
     mov rax, 1
     
 pop_data:
+    movsd xmm15, [rsp]
+    add rsp, 8
     pop r15
     pop r14
     pop r13

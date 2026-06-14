@@ -1,11 +1,11 @@
-global reverse_vector_int
+global reverse_vector_double
 section .text
 extern malloc
 extern free
 
-; void reverse_vector_int(VectorInt *v);
+; void reverse_vector_double(VectorDouble *v);
 ; rcx = v
-reverse_vector_int:
+reverse_vector_double:
     
     push rdi
     push rsi
@@ -23,7 +23,7 @@ reverse_vector_int:
 
     ; malloc new data
     mov rcx, r13
-    shl rcx, 2 ; int size = 4
+    shl rcx, 3 ; double size = 8
     call malloc
     test rax, rax
     jz failed_data
@@ -40,11 +40,11 @@ reverse_data:
     cmp rcx, rdi ; i < len
     jge end
 
-    mov eax, [r15 + rcx * 4]
+    movsd xmm0, [r15 + rcx * 8]
     mov rsi, r13 ; len
     sub rsi, rcx ; len - i
     sub rsi, 1 ; len - i - 1
-    mov [rbx + rsi * 4], eax
+    movsd [rbx + rsi * 8], xmm0
     inc rcx
     jmp reverse_data
 

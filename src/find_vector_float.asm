@@ -1,9 +1,9 @@
-global find_vector_int
+global find_vector_float
 section .text
 
-; bool find_vector_int(VectorInt *v, int elem, int *index);
-; rcx = v, edx = elem, r8 = index
-find_vector_int:
+; bool find_vector_float(VectorFloat *v, float elem, int *index);
+; rcx = v, xmm1 = elem, r8 = index
+find_vector_float:
 
     push rbx
     push rdi
@@ -12,9 +12,11 @@ find_vector_int:
     push r13
     push r14
     push r15
+    sub rsp, 8
 
+    movss [rsp], xmm15
     mov r14, rcx ; r14 = v
-    mov r15d, edx ; r15d = elem
+    movss xmm15, xmm1 ; xmm15 = elem
     mov r13, r8 ; r13 = index
 
     mov rdi, [r14 + 8] ; rsi = v->len
@@ -25,7 +27,8 @@ find_vector_int:
 on_loop:
     cmp rcx, rdi ; i < rdi
     jge no
-    cmp [rsi + rcx * 4], r15d ; compare v->data[i] and elem
+    movss xmm0, [rsi + rcx * 4] ; xmm0 = v->data[i]
+    ucomiss xmm0, xmm15 ; judge xmm0 and elem
     je yes
 
     inc rcx; ; i++
@@ -41,6 +44,8 @@ no:
     mov rax, 0
 
 pop_data:
+    movss xmm15, [rsp]
+    add rsp, 8
     pop r15
     pop r14
     pop r13

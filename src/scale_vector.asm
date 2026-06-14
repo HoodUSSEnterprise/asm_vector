@@ -1,12 +1,12 @@
-global scale_vector
+global scale_vector_int
 section .text
 extern malloc
 extern free
 
-; VectorInt *scale_vector(VectorInt *v, int scale);
+; VectorInt *scale_vector_int(VectorInt *v, int scale);
 ; rcx = v, edx = scale
 
-scale_vector:
+scale_vector_int:
 
     push rbx
     push rdi
@@ -23,14 +23,14 @@ scale_vector:
 
     ; check v1 and v2
     test r14, r14
-    jz .null_ptr
+    jz null_ptr
 
     ; malloc for res, 16 byte
     mov rcx, 16
     call malloc
     ; judge is or not malloc success
     test rax, rax
-    jz .failed_res
+    jz failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
     ; malloc for data, len * 4 byte
@@ -39,7 +39,7 @@ scale_vector:
     call malloc
     ; judge is or not malloc success
     test rax, rax
-    jz .failed_data
+    jz failed_data
 
     ; set the result value
     mov [rbx], rax ; result->data
@@ -47,37 +47,37 @@ scale_vector:
 
     ; initialize 
     mov rdi, [r14] ; rdi = v1->data
-    mov esi, r15d ; rsi = v2->data
+    mov esi, r15d ; esi = scale
     mov r12, [rbx] ; r12 = result->data
     xor rcx, rcx ; int i = 0
 
-.loop:
+on_loop:
     cmp rcx, r13 ; i < len
-    jge .end
+    jge end
 
     mov eax, [rdi + rcx * 4]
     imul eax, esi
     mov [r12 + rcx * 4], eax
 
     inc rcx ; i++
-    jmp .loop
+    jmp on_loop
 
 
-.end:
+end:
     mov rax, rbx
     jmp pop_data
 
-.failed_res:
+failed_res:
     mov rax, 0
     jmp pop_data
 
-.failed_data:
+failed_data:
     mov rcx, rbx
     call free
     mov rax, 0
     jmp pop_data
 
-.null_ptr:
+null_ptr:
     mov rax, 0
     jmp pop_data
 

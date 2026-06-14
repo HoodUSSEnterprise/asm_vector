@@ -1,11 +1,11 @@
-global sub_vector_int
+global add_vector_float
 section .text
 extern malloc
 extern free
 
-;VectorInt *sub_vector_int(VectorInt *v1, VectorInt *v2);
+;VectorFloat *add_vector_float(VectorFloat *v1, VectorFloat *v2);
 ;rcx = v1, rdx = v2
-sub_vector_int:
+add_vector_float:
 
     ; [rcx] = v1.data
     ; [rcx + 8] = v1->len
@@ -44,9 +44,9 @@ sub_vector_int:
     jz failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
-    ; malloc for data, len * 4 byte
+    ; malloc for data, len * 8 byte
     mov rcx, r13
-    shl rcx, 2
+    shl rcx, 2 ; sizeof(float) = 4
     call malloc
     test rax, rax
     jz failed_data
@@ -65,9 +65,9 @@ on_loop:
     cmp rcx, r13 ; i < len
     jge end
 
-    mov eax, [rdi + rcx * 4]
-    sub eax, [rsi + rcx * 4]
-    mov [r12 + rcx * 4], eax
+    movss xmm0, [rdi + rcx * 4]
+    addss xmm0, [rsi + rcx * 4]
+    movss [r12 + rcx * 4], xmm0
 
     inc rcx ; i++
     jmp on_loop

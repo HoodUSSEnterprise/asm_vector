@@ -1,11 +1,11 @@
-global push_back_int
+global push_back_float
 section .text
 extern malloc
 extern free
 
-; void push_back_int(VectorInt *v, int data);
-; rcx = v, rdx = data
-push_back_int:
+; void push_back_float(VectorFloat *v, float data);
+; rcx = v, xmm0 = data
+push_back_float:
 
     push rbx
     push rdi
@@ -13,10 +13,13 @@ push_back_int:
     push r13
     push r14
     push r15
+    sub rsp, 8
+
+    movss [rsp], xmm15
 
     mov r14, rcx ; r14 = v
     mov r13, [rcx + 8] ; r13 = v->len
-    mov r15d, edx ; r15d = data, because eax is 4 bytes(32 bits)
+    movss xmm15, xmm1 ; r15d = data, because eax is 8 bytes(32 bits)
 
     ; check paraments
     test r14, r14
@@ -25,7 +28,7 @@ push_back_int:
     ; malloc for data
     mov rcx, r13 ; rcx = len
     add rcx, 1   ; rcx += 1;
-    shl rcx, 2 ; sizeof(int) = 4, move left 2 bytes
+    shl rcx, 2 ; sizeof(float) = 4, move left 2 bytes
     call malloc
     test rax, rax
     jz failed_data
@@ -43,14 +46,14 @@ on_loop:
     cmp rcx, r13 ; arr index is less than length by 1, so we can use this number
     je equal
     
-    mov eax, [rdi + rcx * 4] ; use eax 32 bytes in order to fit int
-    mov [rbx + rcx * 4], eax
+    movss xmm0, [rdi + rcx * 4]
+    movss [rbx + rcx * 4], xmm0
 
     inc rcx ; rcx++
     jmp on_loop
 
 equal:
-    mov [rbx + rcx * 4], r15d
+    movss [rbx + rcx * 4], xmm15
 
     ; free before data
     mov rcx, [r14]
@@ -67,6 +70,8 @@ null_ptr:
     jmp pop_data
 
 pop_data:
+    movss xmm15, [rsp]
+    add rsp, 8
     pop r15
     pop r14
     pop r13

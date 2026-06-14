@@ -1,9 +1,9 @@
-global pop_int
+global pop_double
 section .text
 
-; void pop_int(VectorInt *v, int *data);
+; void pop_double(VectorDouble *v, double *data);
 ; rcx = v, rdx = data
-pop_int:
+pop_double:
 
     push rbx
     push rdi
@@ -18,15 +18,15 @@ pop_int:
 
     mov r13, [r14 + 8] ; r13 = v->len
     cmp r13, 0
-    je .error
+    je error
     sub [r14 + 8], 1
     sub r13, 1
     
     mov rdi, [r14]
-    mov esi, [rdi + r13 * 4]
-    mov [r15], esi
+    movsd xmm0, [rdi + r13 * 4]
+    movsd [r15], xmm0
 
-.error
+error:
     pop r15
     pop r14
     pop r13

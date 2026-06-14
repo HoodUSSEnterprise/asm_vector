@@ -1,11 +1,11 @@
-global sub_vector_int
+global sub_vector_double
 section .text
 extern malloc
 extern free
 
-;VectorInt *sub_vector_int(VectorInt *v1, VectorInt *v2);
+;VectorDouble *sub_vector_double(VectorDouble *v1, VectorDouble *v2);
 ;rcx = v1, rdx = v2
-sub_vector_int:
+sub_vector_double:
 
     ; [rcx] = v1.data
     ; [rcx + 8] = v1->len
@@ -46,7 +46,7 @@ sub_vector_int:
 
     ; malloc for data, len * 4 byte
     mov rcx, r13
-    shl rcx, 2
+    shl rcx, 3
     call malloc
     test rax, rax
     jz failed_data
@@ -65,9 +65,9 @@ on_loop:
     cmp rcx, r13 ; i < len
     jge end
 
-    mov eax, [rdi + rcx * 4]
-    sub eax, [rsi + rcx * 4]
-    mov [r12 + rcx * 4], eax
+    movsd xmm0, [rdi + rcx * 8]
+    subsd xmm0, [rsi + rcx * 8]
+    movsd [r12 + rcx * 8], xmm0
 
     inc rcx ; i++
     jmp on_loop

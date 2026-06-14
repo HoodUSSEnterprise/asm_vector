@@ -1,11 +1,11 @@
-global mul_vector_int_dot, mul_vector_int_cross
+global mul_vector_float_dot, mul_vector_float_cross
 section .text
 extern malloc
 extern free
 
-; int mul_vector_int_dot(VectorInt *v1, VectorInt *v2);
+; float mul_vector_float_dot(VectorFloat *v1, VectorFloat *v2);
 ; rcx = v1, rdx = v2
-mul_vector_int_dot:
+mul_vector_float_dot:
     push rbx
     push rdi
     push rsi
@@ -32,21 +32,22 @@ mul_vector_int_dot:
     mov rcx, 0 ; i = 0
     mov rdi, [r14] ; rdi = v1->data
     mov rsi, [r15] ; rsi = v2->data
-    xor eax, eax
-    
+    xorpd xmm0, xmm0
+
 on_loop:
     cmp rcx, r13 ; i < v1->len
     jge pop_data_dot
     
-    mov ebx, [rdi + rcx * 4]
-    imul ebx, [rsi + rcx * 4]
-    add eax, ebx
+    movss xmm1, [rdi + rcx * 8]
+    mulss xmm1, [rsi + rcx * 8]
+    addss xmm0, xmm1
 
     inc rcx ; i++
     jmp on_loop
 
 null_ptr_dot:
-    mov rax, 0x7FFFFFFF
+    mov rax, 0x7FFFFFFF        ; rax = INT_MAX
+    cvtsi2ss xmm0, rax         ; rax to float 
 
 pop_data_dot:
     pop r15
@@ -58,13 +59,9 @@ pop_data_dot:
     pop rbx
     ret
 
-<<<<<<< HEAD
-; VectorInt *mul_vector_cross(VectorInt *v1, VectorInt *v2);
-=======
-; VectorInt *mul_vector_int_cross(VectorInt *v1, VectorInt *v2);
->>>>>>> asm_vector_double
+; VectorFloat *mul_vector_float_cross(VectorFloat *v1, VectorFloat *v2);
 ; rcx = v1, rdx = v2
-mul_vector_int_cross:
+mul_vector_float_cross:
     push rbx
     push rdi
     push rsi
@@ -101,9 +98,9 @@ mul_vector_int_cross:
     jz failed_res_cross
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
-    ; malloc for data, len * 4 byte
+    ; malloc for data, len * 8 byte
     mov rcx, r13 ; rcx = v1->len
-    shl rcx, 2 ; rcx * 4
+    shl rcx, 2 ; rcx * 8
     call malloc
     test rax, rax
     jz failed_data_cross
@@ -119,34 +116,35 @@ mul_vector_int_cross:
     mov r12, [rbx] ; r12 = res->data
     
     ; res->data[0]
-    mov r13, [rdi + 4] ; r13 = v1->data[1]
-    imul r13, [rsi + 8] ; r13 *= v2->data[2]
-    mov rax, [rdi + 8] ; rax = v1->data[2]
-    imul rax, [rsi + 4] ; rax *= v2->data[1]
-    sub r13, rax
-    mov [r12], r13
+    movss xmm1, [rdi + 4] ; xmm1 = v1->data[1]
+    mulss xmm1, [rsi + 8] ; xmm1 *= v2->data[2]
+    movss xmm0, [rdi + 8] ; xmm0 = v1->data[2]
+    mulss xmm0, [rsi + 4] ; xmm0 *= v2->data[1]
+    subss xmm1, xmm0
+    movss [r12], xmm1
 
     ; res->data[1]
-    mov r13, [rdi + 8] ; r13 = v1->data[2]
-    imul r13, [rsi] ; r13 *= v2->data[0]
-    mov rax, [rdi] ; rax = v1->data[0]
-    imul rax, [rsi + 8] ; rax *= v2->data[2]
-    sub r13, rax
-    mov [r12 + 4], r13
+    movss xmm1, [rdi + 8] ; xmm1 = v1->data[2]
+    mulss xmm1, [rsi] ; xmm1 *= v2->data[0]
+    movss xmm0, [rdi] ; xmm0 = v1->data[0]
+    mulss xmm0, [rsi + 8] ; xmm0 *= v2->data[2]
+    subss xmm1, xmm0
+    movss [r12 + 4], xmm1
 
     ; res->data[2]
-    mov r13, [rdi] ; r13 = v1->data[0]
-    imul r13, [rsi + 4] ; r13 *= v2->data[1]
-    mov rax, [rdi + 4] ; rax = v1->data[1]
-    imul rax, [rsi] ; rax *= v2->data[0]
-    sub r13, rax
-    mov [r12 + 8], r13
+    movss xmm1, [rdi] ; xmm1 = v1->data[0]
+    mulss xmm1, [rsi + 4] ; xmm1 *= v2->data[1]
+    movss xmm0, [rdi + 4] ; xmm0 = v1->data[1]
+    mulss xmm0, [rsi] ; xmm0 *= v2->data[0]
+    subss xmm1, xmm0
+    movss [r12 + 8], xmm1
 
     mov rax, rbx
     jmp pop_data_cross
 
 null_ptr_cross:
-    mov rax, 0x7FFFFFFF
+    mov rax, 0
+    jmp pop_data_cross
 
 failed_res_cross:
     mov rax, 0

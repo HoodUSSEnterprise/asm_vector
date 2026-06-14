@@ -3,6 +3,10 @@
 
 #include "myvector.h"
 
-VectorInt *scale_vector(VectorInt *v, int scale);
+VectorInt *scale_vector_int(VectorInt *v, int scale);
+
+VectorFloat *scale_vector_float(VectorFloat *v, float scale);
+
+VectorDouble *scale_vector_double(VectorDouble *v, double scale);
 
 #endif // SCALE_VECTOR_H
