@@ -34,16 +34,16 @@ add_vector_int:
     jne null_ptr
 
     ; malloc for res, 16 byte
-    mov rcx, 16
-    call malloc
+    mov rdi, 16
+    call malloc wrt ..plt
     test rax, rax
     jz failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
     ; malloc for data, len * 4 byte
-    mov rcx, r13
-    shl rcx, 2
-    call malloc
+    mov rdi, r13
+    shl rdi, 2
+    call malloc wrt ..plt
     test rax, rax
     jz failed_data
 
@@ -78,8 +78,8 @@ failed_res:
     jmp pop_data
 
 failed_data:
-    mov rcx, rbx
-    call free
+    mov rdi, rbx
+    call free wrt ..plt
     mov rax, 0
     jmp pop_data
 
