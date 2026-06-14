@@ -120,11 +120,7 @@ int main(void)
     puts("----------------replace vector------------------");
     for (int i = 0; i < 10; i++)
     {
-<<<<<<< HEAD
-        push_back(v3, i + 1);
-        == == == =
-                     push_back_int(v3, i + 1);
->>>>>>> asm_vector_double
+        push_back_int(v3, i + 1);
     }
     puts("Before:");
     printf("%zu\n", v3->len);
@@ -136,32 +132,25 @@ int main(void)
     int old_data = 6;
     int new_data = 9;
     puts("After");
-<<<<<<< HEAD
-    if (replace_vector(v3, old_data, new_data))
+    if (replace_vector_int(v3, old_data, new_data))
     {
-        == == == =
-                     if (replace_vector_int(v3, old_data, new_data))
->>>>>>> asm_vector_double
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
         {
-            printf("%zu\n", v3->len);
-            for (size_t i = 0; i < v3->len; i++)
-            {
-                printf("%d ", v3->data[i]);
-            }
-            putchar('\n');
+            printf("%d ", v3->data[i]);
         }
+        putchar('\n');
     }
+
     else
     {
         printf("No find value %d\n", old_data);
     }
     puts("------------------------------------------------");
     puts("----------------reverse vector------------------");
-<<<<<<< HEAD
-    reverse_vector(v3);
-    == == == =
-                 reverse_vector_int(v3);
->>>>>>> asm_vector_double
+
+    reverse_vector_int(v3);
+
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < v3->len; i++)
     {
@@ -173,20 +162,15 @@ int main(void)
     size_t insert_pos = 2;
     // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
     //        v3, v3->data, v3->len, insert_pos);
-<<<<<<< HEAD
-    if (insert_vector(v3, insert_pos, 4))
+
+    if (insert_vector_int(v3, insert_pos, 4))
     {
-        == == == =
-                     if (insert_vector_int(v3, insert_pos, 4))
->>>>>>> asm_vector_double
+        printf("%zu\n", v3->len);
+        for (size_t i = 0; i < v3->len; i++)
         {
-            printf("%zu\n", v3->len);
-            for (size_t i = 0; i < v3->len; i++)
-            {
-                printf("%d ", v3->data[i]);
-            }
-            putchar('\n');
+            printf("%d ", v3->data[i]);
         }
+        putchar('\n');
     }
     else
     {
