@@ -29,28 +29,28 @@ int main(void)
         printf("%f ", v3->data[i]);
     }
     putchar('\n');
-    //     puts("------------------------------------------------");
-    //     puts("-------------------sub vector-------------------");
-    //     v3 = sub_vector_float(&v1, &v2);
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < 3; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
-    //     puts("------------------------------------------------");
-    //     puts("-------------------mul vector-------------------");
-    //     float val = mul_vector_float_dot(&v1, &v2);
-    //     printf("val = %f\n", val);
-    //     putchar('\n');
-    //     v3 = mul_vector_float_cross(&v1, &v2);
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < 3; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
-    //     puts("------------------------------------------------");
+    puts("------------------------------------------------");
+    puts("-------------------sub vector-------------------");
+    v3 = sub_vector_float(&v1, &v2);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < 3; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    puts("-------------------mul vector-------------------");
+    float val = mul_vector_float_dot(&v1, &v2);
+    printf("val = %f\n", val);
+    putchar('\n');
+    v3 = mul_vector_float_cross(&v1, &v2);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < 3; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
     //     puts("------------------scale vector------------------");
     //     v3 = scale_vector_float(&v1, 2);
     //     printf("%zu\n", v3->len);
