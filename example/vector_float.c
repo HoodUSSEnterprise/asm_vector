@@ -51,15 +51,15 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
-    //     puts("------------------scale vector------------------");
-    //     v3 = scale_vector_float(&v1, 2);
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < 3; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
-    //     puts("------------------------------------------------");
+    puts("------------------scale vector------------------");
+    v3 = scale_vector_float(&v1, 2);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < 3; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
     //     puts("----------------push_back vector----------------");
     //     push_back_float(v3, 4);
     //     push_back_float(v3, 5);

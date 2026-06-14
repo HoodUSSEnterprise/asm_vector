@@ -35,7 +35,7 @@ set(LIB_SOURCES_VECTOR_FLOAT
 #     src/${PLATFORM_DIR}/remove_vector_float.asm
 #     src/${PLATFORM_DIR}/replace_vector_float.asm
 #     src/${PLATFORM_DIR}/reverse_vector_float.asm
-#     src/${PLATFORM_DIR}/scale_vector_float.asm
+     src/${PLATFORM_DIR}/scale_vector_float.asm
      src/${PLATFORM_DIR}/sub_vector_float.asm
 )
  
