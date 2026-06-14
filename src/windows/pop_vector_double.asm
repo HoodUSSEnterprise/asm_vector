@@ -13,8 +13,18 @@ pop_double:
     push r15
 
     ; save rcx and rdx
-    mov r14, rcx
+    mov r14, rcx ; v
     mov r15, rdx
+
+    test r14, r14
+    jz error
+
+    mov r14, [rcx]
+
+    test r14, r14
+    jz error
+
+    mov r14, rcx
 
     mov r13, [r14 + 8] ; r13 = v->len
     cmp r13, 0
