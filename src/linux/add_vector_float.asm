@@ -1,21 +1,11 @@
-<<<<<<<< HEAD:src/linux/sub_vector_double.asm
-global sub_vector_double
-========
-global sub_vector_float
->>>>>>>> linux_float:src/linux/sub_vector_float.asm
+global add_vector_float
 section .text
 extern malloc
 extern free
 
-<<<<<<<< HEAD:src/linux/sub_vector_double.asm
-;VectorDouble *sub_vector_double(VectorDouble *v1, VectorDouble *v2);
+;VectorFloat *add_vector_float(VectorFloat *v1, VectorFloat *v2);
 ;rdi = v1, rsi = v2
-sub_vector_double:
-========
-;VectorFloat *sub_vector_float(VectorFloat *v1, VectorFloat *v2);
-;rdi = v1, rsi = v2
-sub_vector_float:
->>>>>>>> linux_float:src/linux/sub_vector_float.asm
+add_vector_float:
 
     ; [rdi] = v1.data
     ; [rdi + 8] = v1->len
@@ -50,9 +40,9 @@ sub_vector_float:
     jz failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
-    ; malloc for data, len * 4 byte
+    ; malloc for data, len * 8 byte
     mov rdi, r13
-    shl rdi, 3
+    shl rdi, 2 ; sizeof(float) = 4
     call malloc wrt ..plt
     test rax, rax
     jz failed_data
@@ -71,15 +61,9 @@ on_loop:
     cmp rcx, r13 ; i < len
     jge end
 
-<<<<<<<< HEAD:src/linux/sub_vector_double.asm
-    movsd xmm0, [rdi + rcx * 8]
-    subsd xmm0, [rsi + rcx * 8]
-    movsd [r12 + rcx * 8], xmm0
-========
     movss xmm0, [rdi + rcx * 4]
-    subss xmm0, [rsi + rcx * 4]
+    addss xmm0, [rsi + rcx * 4]
     movss [r12 + rcx * 4], xmm0
->>>>>>>> linux_float:src/linux/sub_vector_float.asm
 
     inc rcx ; i++
     jmp on_loop
