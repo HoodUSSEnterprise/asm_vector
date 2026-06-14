@@ -27,16 +27,16 @@ include_directories(include)
 # 库的源文件（从对应平台目录读取）
 set(LIB_SOURCES_VECTOR
     src/${PLATFORM_DIR}/add_vector.asm
-#     src/${PLATFORM_DIR}/find_vector.asm
-#     src/${PLATFORM_DIR}/insert_vector.asm
-#     src/${PLATFORM_DIR}/mul_vector.asm
-#     src/${PLATFORM_DIR}/pop_vector.asm
-#     src/${PLATFORM_DIR}/push_back_vector.asm
-#     src/${PLATFORM_DIR}/remove_vector.asm
-#     src/${PLATFORM_DIR}/replace_vector.asm
-#     src/${PLATFORM_DIR}/reverse_vector.asm
-#     src/${PLATFORM_DIR}/scale_vector.asm
-#     src/${PLATFORM_DIR}/sub_vector.asm
+    src/${PLATFORM_DIR}/find_vector.asm
+    src/${PLATFORM_DIR}/insert_vector.asm
+    src/${PLATFORM_DIR}/mul_vector.asm
+    src/${PLATFORM_DIR}/pop_vector.asm
+    src/${PLATFORM_DIR}/push_back_vector.asm
+    src/${PLATFORM_DIR}/remove_vector.asm
+    src/${PLATFORM_DIR}/replace_vector.asm
+    src/${PLATFORM_DIR}/reverse_vector.asm
+    src/${PLATFORM_DIR}/scale_vector.asm
+    src/${PLATFORM_DIR}/sub_vector.asm
 )
 
 # 创建库
@@ -48,47 +48,3 @@ target_link_libraries(vector_lib ${EXTRA_LIBS})
 # 创建测试可执行文件
 add_executable(MyProject example/main.c)
 target_link_libraries(MyProject vector_lib)
-
-# # Double 版本
-# set(LIB_SOURCES_VECTOR_DOUBLE
-#     src/${PLATFORM_DIR}/add_vector_double.asm
-#     src/${PLATFORM_DIR}/find_vector_double.asm
-#     src/${PLATFORM_DIR}/insert_vector_double.asm
-#     src/${PLATFORM_DIR}/mul_vector_double.asm
-#     src/${PLATFORM_DIR}/pop_vector_double.asm
-#     src/${PLATFORM_DIR}/push_back_vector_double.asm
-#     src/${PLATFORM_DIR}/remove_vector_double.asm
-#     src/${PLATFORM_DIR}/replace_vector_double.asm
-#     src/${PLATFORM_DIR}/reverse_vector_double.asm
-#     src/${PLATFORM_DIR}/scale_vector_double.asm
-#     src/${PLATFORM_DIR}/sub_vector_double.asm
-# )
-# 
-# add_library(vector_lib_double ${LIB_SOURCES_VECTOR_DOUBLE})
-# target_include_directories(vector_lib_double PUBLIC include)
-# target_link_libraries(vector_lib_double ${EXTRA_LIBS})
-# 
-# add_executable(vector_double example/vector_double.c)
-# target_link_libraries(vector_double vector_lib_double)
-# 
-# # Float 版本
-# set(LIB_SOURCES_VECTOR_FLOAT
-#     src/${PLATFORM_DIR}/add_vector_float.asm
-#     src/${PLATFORM_DIR}/find_vector_float.asm
-#     src/${PLATFORM_DIR}/insert_vector_float.asm
-#     src/${PLATFORM_DIR}/mul_vector_float.asm
-#     src/${PLATFORM_DIR}/pop_vector_float.asm
-#     src/${PLATFORM_DIR}/push_back_vector_float.asm
-#     src/${PLATFORM_DIR}/remove_vector_float.asm
-#     src/${PLATFORM_DIR}/replace_vector_float.asm
-#     src/${PLATFORM_DIR}/reverse_vector_float.asm
-#     src/${PLATFORM_DIR}/scale_vector_float.asm
-#     src/${PLATFORM_DIR}/sub_vector_float.asm
-# )
-# 
-# add_library(vector_float_lib ${LIB_SOURCES_VECTOR_FLOAT})
-# target_include_directories(vector_float_lib PUBLIC include)
-# target_link_libraries(vector_float_lib ${EXTRA_LIBS})
-# 
-# add_executable(vector_float example/vector_float.c)
-# target_link_libraries(vector_float vector_float_lib)
