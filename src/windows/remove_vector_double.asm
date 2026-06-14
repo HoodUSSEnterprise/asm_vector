@@ -20,6 +20,14 @@ remove_vector_double:
     movsd [rsp], xmm15
 
     mov r14, rcx ; r14 = v
+
+    mov r14, [rcx]
+    
+    test r14, r14
+    jz no
+    
+    mov r14, rcx
+
     movsd xmm15, xmm1 ; xmm15 = removed_value
     mov r13, [rcx + 8] ; r13 = v->len
 
