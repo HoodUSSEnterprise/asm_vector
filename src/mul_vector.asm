@@ -58,11 +58,7 @@ pop_data_dot:
     pop rbx
     ret
 
-<<<<<<< HEAD
-; VectorInt *mul_vector_cross(VectorInt *v1, VectorInt *v2);
-=======
 ; VectorInt *mul_vector_int_cross(VectorInt *v1, VectorInt *v2);
->>>>>>> asm_vector_double
 ; rcx = v1, rdx = v2
 mul_vector_int_cross:
     push rbx
