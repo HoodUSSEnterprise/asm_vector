@@ -22,11 +22,12 @@ replace_vector_double:
     mov r12, [rcx + 8]
 
     mov rsi, [r14] ; rsi = v->data
+    mov rdi, 0     ; flag
     xor rcx, rcx ; i = 0
 
 calc_number:
     cmp rcx, r12 ; i < len
-    jge pop_data
+    jge next_step
     movsd xmm0, [rsi + rcx * 8]
     ucomisd xmm0, xmm14 ; judge xmm0 and elem
     je replace_elem
@@ -36,9 +37,17 @@ calc_number:
 
 replace_elem:
     movsd [rsi + rcx * 8], xmm15
+    mov rdi, 1
     inc rcx
     jmp calc_number
 
+next_step:
+    cmp rdi, 0
+    je no_replace
+    mov rax, 1
+    jmp pop data
+no_replace:
+    mov rax, 0
 
 pop_data:
 
