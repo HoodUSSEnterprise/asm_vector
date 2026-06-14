@@ -1,16 +1,16 @@
-global add_vector_double
+global add_vector_float
 section .text
 extern malloc
 extern free
 
-;VectorDouble *add_vector_double(VectorDouble *v1, VectorDouble *v2);
-;rdi = v1, rsi = v2
-add_vector_double:
+;VectorFloat *add_vector_float(VectorFloat *v1, VectorFloat *v2);
+;rdi = v1, rdx = v2
+add_vector_float:
 
     ; [rdi] = v1.data
     ; [rdi + 8] = v1->len
-    ; [rsi] = v2.data
-    ; [rsi + 8] = v2->len
+    ; [rdx] = v2.data
+    ; [rdx + 8] = v2->len
 
     push rbx
     push r12
@@ -20,7 +20,7 @@ add_vector_double:
 
     ; use r14 and r15 to save paraments
     mov r14, rdi ; r14 = v1
-    mov r15, rsi ; r15 = v2
+    mov r15, rdx ; r15 = v2
 
     ; check v1 and v2
     test r14, r14
@@ -35,15 +35,15 @@ add_vector_double:
 
     ; malloc for res, 16 byte
     mov rdi, 16
-    call malloc
+    call malloc wrt ..plt
     test rax, rax
     jz failed_res
     mov rbx, rax ; use rbx save the result, rax use new malloc
 
     ; malloc for data, len * 8 byte
     mov rdi, r13
-    shl rdi, 3 ; sizeof(double) = 8
-    call malloc
+    shl rdi, 2 ; sizeof(float) = 4
+    call malloc wrt ..plt
     test rax, rax
     jz failed_data
 
@@ -52,20 +52,20 @@ add_vector_double:
     mov [rbx + 8], r13 ; result->len
 
     ; initialize 
-    mov rdi, [r14] ; rdi = v1->data
-    mov rsi, [r15] ; rsi = v2->data
+    mov r8, [r14] ; r8 = v1->data
+    mov r9, [r15] ; rsi = v2->data
     mov r12, [rbx] ; r12 = result->data
-    xor rdi, rcx ; int i = 0
+    xor rcx, rcx ; int i = 0
 
 on_loop:
-    cmp rdi, r13 ; i < len
+    cmp rcx, r13 ; i < len
     jge end
 
-    movsd xmm0, [rdi + rdi * 8]
-    addsd xmm0, [rsi + rdi * 8]
-    movsd [r12 + rdi * 8], xmm0
+    movss xmm0, [r8 + rcx * 4]
+    addss xmm0, [r9 + rcx * 4]
+    movss [r12 + rcx * 4], xmm0
 
-    inc rdi ; i++
+    inc rcx ; i++
     jmp on_loop
 
 
@@ -79,7 +79,7 @@ failed_res:
 
 failed_data:
     mov rdi, rbx
-    call free
+    call free wrt ..plt
     mov rax, 0
     jmp pop_data
 
