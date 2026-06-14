@@ -22,6 +22,13 @@ push_back_int:
     test r14, r14
     jz null_ptr
 
+    mov r14, [rcx]
+    
+    test r14, r14
+    jz null_ptr
+    
+    mov r14, rcx
+
     ; malloc for data
     mov rcx, r13 ; rcx = len
     add rcx, 1   ; rcx += 1;
