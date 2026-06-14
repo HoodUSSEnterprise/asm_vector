@@ -141,16 +141,13 @@ int main(void)
         }
         putchar('\n');
     }
-
     else
     {
         printf("No find value %d\n", old_data);
     }
     puts("------------------------------------------------");
     puts("----------------reverse vector------------------");
-
     reverse_vector_int(v3);
-
     printf("%zu\n", v3->len);
     for (size_t i = 0; i < v3->len; i++)
     {
@@ -160,9 +157,6 @@ int main(void)
     puts("------------------------------------------------");
     puts("-----------------insert vector------------------");
     size_t insert_pos = 2;
-    // printf("insert_vector: v=%p, v->data=%p, v->len=%zu, pos=%zu\n",
-    //        v3, v3->data, v3->len, insert_pos);
-
     if (insert_vector_int(v3, insert_pos, 4))
     {
         printf("%zu\n", v3->len);
