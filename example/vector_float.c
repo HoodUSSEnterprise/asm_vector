@@ -60,25 +60,25 @@ int main(void)
     }
     putchar('\n');
     puts("------------------------------------------------");
-    //     puts("----------------push_back vector----------------");
-    //     push_back_float(v3, 4);
-    //     push_back_float(v3, 5);
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < v3->len; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
-    //     puts("------------------------------------------------");
-    //     puts("-------------------pop vector-------------------");
-    //     float pop_value = 0;
-    //     pop_float(v3, &pop_value);
-    //     printf("%zu\n", v3->len);
-    //     for (size_t i = 0; i < v3->len; i++)
-    //     {
-    //         printf("%f ", v3->data[i]);
-    //     }
-    //     putchar('\n');
+    puts("----------------push_back vector----------------");
+    push_back_float(v3, 4);
+    push_back_float(v3, 5);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
+    puts("------------------------------------------------");
+    puts("-------------------pop vector-------------------");
+    float pop_value = 0;
+    pop_float(v3, &pop_value);
+    printf("%zu\n", v3->len);
+    for (size_t i = 0; i < v3->len; i++)
+    {
+        printf("%f ", v3->data[i]);
+    }
+    putchar('\n');
     //     puts("------------------------------------------------");
     //     puts("-----------------remove vector------------------");
     //     float remove_val = 4;
