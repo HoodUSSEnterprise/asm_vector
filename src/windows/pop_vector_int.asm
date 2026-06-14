@@ -16,6 +16,16 @@ pop_int:
     mov r14, rcx
     mov r15, rdx
 
+    test r14, r14
+    jz error
+
+    mov r14, [rcx]
+
+    test r14, r14
+    jz error
+
+    mov r14, rcx
+
     mov r13, [r14 + 8] ; r13 = v->len
     cmp r13, 0
     je .error
