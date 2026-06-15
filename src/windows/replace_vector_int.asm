@@ -53,7 +53,8 @@ next_step:
     cmp rdi, 0
     je no_replace
     mov rax, 1
-    jmp pop data
+    jmp pop_data
+
 no_replace:
     mov rax, 0
 
