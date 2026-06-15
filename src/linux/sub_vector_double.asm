@@ -1,21 +1,11 @@
-<<<<<<<< HEAD:src/linux/sub_vector_double.asm
 global sub_vector_double
-========
-global sub_vector_float
->>>>>>>> linux_float:src/linux/sub_vector_float.asm
 section .text
 extern malloc
 extern free
 
-<<<<<<<< HEAD:src/linux/sub_vector_double.asm
 ;VectorDouble *sub_vector_double(VectorDouble *v1, VectorDouble *v2);
 ;rdi = v1, rsi = v2
 sub_vector_double:
-========
-;VectorFloat *sub_vector_float(VectorFloat *v1, VectorFloat *v2);
-;rdi = v1, rsi = v2
-sub_vector_float:
->>>>>>>> linux_float:src/linux/sub_vector_float.asm
 
     ; [rdi] = v1.data
     ; [rdi + 8] = v1->len
@@ -38,6 +28,19 @@ sub_vector_float:
     test r15, r15
     jz null_ptr
 
+    mov r14, [rdi]
+    mov r15, [rsi]
+
+    ; check v1->data and v2->data
+    test r14, r14
+    jz null_ptr
+    test r15, r15
+    jz null_ptr
+
+    ; restore r14 and r15
+    mov r14, rdi ; r14 = v1
+    mov r15, rsi ; r15 = v2
+    
     ; check v1 and v2 length
     mov r13, [r14 + 8] ; rbx = v1->len
     cmp r13, [r15 + 8] ; judge v1->len is or not equal to v2->len
@@ -71,15 +74,9 @@ on_loop:
     cmp rcx, r13 ; i < len
     jge end
 
-<<<<<<<< HEAD:src/linux/sub_vector_double.asm
     movsd xmm0, [rdi + rcx * 8]
     subsd xmm0, [rsi + rcx * 8]
     movsd [r12 + rcx * 8], xmm0
-========
-    movss xmm0, [rdi + rcx * 4]
-    subss xmm0, [rsi + rcx * 4]
-    movss [r12 + rcx * 4], xmm0
->>>>>>>> linux_float:src/linux/sub_vector_float.asm
 
     inc rcx ; i++
     jmp on_loop
