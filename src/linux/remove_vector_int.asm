@@ -18,6 +18,18 @@ remove_vector_int:
     mov r15d, esi ; r15d = removed_value
     mov r13, [rdi + 8] ; r13 = v->len
 
+    ; check paraments
+    test r14, r14
+    jz null_ptr
+
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rdi ; r14 = v
+    
     mov r12, 0 ; calc number of removed_value
     mov rdx, [r14] ; r12 = v->data
     xor rcx, rcx ; i = 0
