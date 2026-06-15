@@ -15,6 +15,18 @@ replace_vector_int:
     mov r13d, edx ; r13d = new_elem
     mov r12, [rdi + 8]
 
+    ; check paraments
+    test r14, r14
+    jz null_ptr
+
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rdi ; r14 = v
+    
     mov rsi, [r14] ; rsi = v->data
     xor rcx, rcx ; i = 0
 
