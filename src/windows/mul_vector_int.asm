@@ -24,6 +24,9 @@ mul_vector_int_dot:
     test r15, r15
     jz null_ptr_dot
 
+    mov r14, [rcx] ; r14 = v1->data
+    mov r15, [rdx] ; r15 = v2->data
+
     ; check v1->data and v2->data
     test r14, r14
     jz null_ptr_dot
@@ -88,6 +91,9 @@ mul_vector_int_cross:
     jz null_ptr_cross
     test r15, r15
     jz null_ptr_cross
+
+    mov r14, [rcx] ; r14 = v1->data
+    mov r15, [rdx] ; r15 = v2->data
 
     ; check v1->data and v2->data
     test r14, r14
