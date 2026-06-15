@@ -18,8 +18,16 @@ reverse_vector_float:
     mov r13, [rcx + 8] ; r13 = v->len
     mov r15, [rcx] ; r15 = v->data
 
+    ; check v
     test r14, r14
     jz pop_data
+
+    mov r14, [rcx]
+    ; check v->data
+    test r14, r14
+    jz pop_data
+
+    mov r14, rcx
 
     ; malloc new data
     mov rcx, r13
