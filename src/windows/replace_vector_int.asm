@@ -13,6 +13,19 @@ replace_vector_int:
     push r15
 
     mov r14, rcx ; r14 = v
+    
+    ; check v
+    test r14, r14
+    jz no_replace
+
+    mov r14, [rcx] ; r14 = v->data
+
+    ; check v->data
+    test r14, r14
+    jz no_replace
+
+    mov r14, rcx
+    
     mov r15d, edx ; r15d = old_elem
     mov r13d, r8d ; r13d = new_elem
     mov r12, [rcx + 8]
