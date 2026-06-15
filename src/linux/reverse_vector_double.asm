@@ -21,6 +21,14 @@ reverse_vector_double:
     test r14, r14
     jz pop_data
 
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz pop_data
+
+    mov r14, rdi ; r14 = v
+    
     ; malloc new data
     mov rdi, r13
     shl rdi, 3 ; double size = 8
