@@ -16,7 +16,7 @@ pop_int:
 
     mov r13, [r14 + 8] ; r13 = v->len
     cmp r13, 0
-    je .error
+    je error
     sub [r14 + 8], 1
     sub r13, 1
     
@@ -24,7 +24,7 @@ pop_int:
     mov esi, [rdi + r13 * 4]
     mov [r15], esi
 
-.error:
+error:
     pop r15
     pop r14
     pop r13
