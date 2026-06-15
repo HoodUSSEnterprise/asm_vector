@@ -32,6 +32,19 @@ sub_vector_int:
     test r15, r15
     jz null_ptr
 
+    mov r14, [rcx]
+    mov r15, [rdx]
+
+    ; check v1->data and v2->data
+    test r14, r14
+    jz null_ptr
+    test r15, r15
+    jz null_ptr
+
+    ; restore r14 and r15
+    mov r14, rcx ; r14 = v1
+    mov r15, rdx ; r15 = v2
+    
     ; check v1 and v2 length
     mov r13, [r14 + 8] ; rbx = v1->len
     cmp r13, [r15 + 8] ; judge v1->len is or not equal to v2->len
