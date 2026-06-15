@@ -23,6 +23,14 @@ push_back_double:
     test r14, r14
     jz null_ptr
 
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rdi ; r14 = v
+
     ; malloc for data
     mov rdi, r13 ; rdi = len
     add rdi, 1   ; rdi += 1;
