@@ -21,6 +21,18 @@ remove_vector_double:
     movsd xmm15, xmm0 ; xmm15 = removed_value
     mov r13, [rdi + 8] ; r13 = v->len
 
+    ; check paraments
+    test r14, r14
+    jz null_ptr
+
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rdi ; r14 = v
+    
     xor r12, r12 ; calc number of removed_value
     mov r15, [r14] ; r15 = v->data
     xor rcx, rcx ; i = 0
