@@ -27,6 +27,14 @@ scale_vector_double:
     test r14, r14
     jz null_ptr
 
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz pop_data
+
+    mov r14, rdi ; r14 = v
+    
     ; malloc for res, 16 byte
     mov rdi, 16
     call malloc wrt ..plt
