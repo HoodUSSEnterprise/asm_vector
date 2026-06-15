@@ -21,9 +21,17 @@ scale_vector_int:
     mov r15d, edx ; r15 = scale
     mov r13, [rcx + 8] ; r3 = v1 -> len
 
-    ; check v1 and v2
+    ; check v
     test r14, r14
     jz null_ptr
+
+    mov r14, [rcx]
+
+    ; check v->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rcx
 
     ; malloc for res, 16 byte
     mov rcx, 16
