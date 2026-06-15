@@ -22,6 +22,19 @@ mul_vector_float_dot:
     test r15, r15
     jz null_ptr_dot
 
+    mov r14, [rdi] ; r14 = v1->data
+    mov r15, [rsi] ; r15 = v2->data
+
+    ; check v1->data and v2->data
+    test r14, r14
+    jz null_ptr_dot
+    test r15, r15
+    jz null_ptr_dot
+
+    ; restore r14 and r15
+    mov r14, rdi ; r14 = v1
+    mov r15, rsi ; r15 = v2
+
     ; check v1 and v2 length
     mov r13, [r14 + 8] ; rbx = v1->len
     cmp r13, [r15 + 8] ; judge v1->len is or not equal to v2->len
@@ -73,6 +86,19 @@ mul_vector_float_cross:
     jz null_ptr_cross
     test r15, r15
     jz null_ptr_cross
+
+    mov r14, [rdi] ; r14 = v1->data
+    mov r15, [rsi] ; r15 = v2->data
+
+    ; check v1->data and v2->data
+    test r14, r14
+    jz null_ptr_cross
+    test r15, r15
+    jz null_ptr_cross
+
+    ; restore r14 and r15
+    mov r14, rdi ; r14 = v1
+    mov r15, rsi ; r15 = v2
 
     ; check v1 and v2 length
     mov r13, [r14 + 8] ; rbx = v1->len
