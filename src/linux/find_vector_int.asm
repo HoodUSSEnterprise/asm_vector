@@ -12,6 +12,19 @@ find_vector_int:
     push r15
 
     mov r14, rdi ; r14 = v
+            
+    ; check v1
+    test r14, r14
+    jz null_ptr
+
+    mov r14, [rdi]
+
+    ; check v1->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rdi
+
     mov r15d, esi ; r15d = elem
     mov r13, rdx ; r13 = index
 
@@ -29,6 +42,9 @@ on_loop:
     inc rcx; ; i++
     jmp on_loop
 
+null_ptr:
+    mov rax, 0
+    jmp pop_data
 
 yes:
     mov [r13], rcx
