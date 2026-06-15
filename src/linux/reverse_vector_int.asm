@@ -19,6 +19,14 @@ reverse_vector_int:
     test r14, r14
     jz pop_data
 
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz pop_data
+
+    mov r14, rdi ; r14 = v
+    
     ; malloc new data
     mov rdi, r13
     shl rdi, 2 ; int size = 4
