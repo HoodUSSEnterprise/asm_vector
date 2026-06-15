@@ -14,6 +14,18 @@ pop_int:
     mov r14, rdi
     mov r15, rsi
 
+    ; check c
+    test r14, r14
+    jz error
+
+    mov r14, [rdi]
+
+    ;check v->data
+    test r14, r14
+    jz error
+
+    mov r14, rdi
+
     mov r13, [r14 + 8] ; r13 = v->len
     cmp r13, 0
     je error
