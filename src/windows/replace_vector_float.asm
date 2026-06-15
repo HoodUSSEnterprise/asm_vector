@@ -17,6 +17,19 @@ replace_vector_float:
     movss [rsp + 8], xmm15
 
     mov r14, rcx ; r14 = v
+
+    ; check v
+    test r14, r14
+    jz no_replace
+
+    mov r14, [rcx] ; r14 = v->data
+
+    ; check v->data
+    test r14, r14
+    jz no_replace
+
+    mov r14, rcx
+
     movss xmm14, xmm1 ; xmm14 = old_elem
     movss xmm15, xmm2 ; xmm15 = new_elem
     mov r12, [rcx + 8]
