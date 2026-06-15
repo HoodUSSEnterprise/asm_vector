@@ -19,6 +19,18 @@ replace_vector_double:
     movsd xmm15, xmm1 ; xmm15 = new_elem
     mov r12, [rdi + 8]
 
+    ; check paraments
+    test r14, r14
+    jz null_ptr
+
+    mov r14, [rdi]
+
+    ; check v->data
+    test r14, r14
+    jz null_ptr
+
+    mov r14, rdi ; r14 = v
+    
     mov rsi, [r14] ; rsi = v->data
     xor rcx, rcx ; i = 0
 
